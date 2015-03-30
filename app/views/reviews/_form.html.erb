@@ -1,0 +1,9 @@
+<%= form_for @review do |f| %>
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+
+  <%= f.label :rating %>
+  <%= f.select :rating, ['Select a rating', 5, 4, 3, 2, 1]  %>
+
+  <%= f.submit %>
+<% end %>
