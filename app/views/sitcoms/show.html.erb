@@ -1,0 +1,16 @@
+<div class="row">
+
+  <h3><%= @sitcom.name %></h3>
+
+  <ul>
+    <li>Description: <%= @sitcom.description %></li>
+    <li>Start Year: <%= @sitcom.start_year %></li>
+    <li>End Year: <%= @sitcom.end_year %></li>
+    <li>Genre: <%= @sitcom.genre %></li>
+    <li>Network's': <%= @sitcom.network %></li>
+  </ul>
+
+  <%= link_to "Delete", @sitcom, method: :delete, :class => "button", confirm: "Are you sure?" %>
+  <%= link_to "Edit", edit_sitcom_path, :class => "button" %>
+
+</div>

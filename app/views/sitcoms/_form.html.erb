@@ -1,0 +1,15 @@
+<%= form_for(@sitcom) do |f| %>
+  <% if @sitcom.errors.present? %>
+    <% @sitcom.errors.full_messages.each do |error| %>
+      <%= error %>
+    <% end %>
+  <% end %>
+
+  <%= f.text_field :name %>
+  <%= f.text_area :description %>
+  <%= f.date_field :start_year %>
+  <%= f.date_field :end_year %>
+  <%= f.text_field :genre %>
+  <%= f.text_field :network %>
+  <%= f.submit %>
+<% end %>

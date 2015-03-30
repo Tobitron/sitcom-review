@@ -52,4 +52,5 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.include AuthenticationHelper
   config.infer_spec_type_from_file_location!
+  config.include AuthenticationHelper
 end
