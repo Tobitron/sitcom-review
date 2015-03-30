@@ -11,10 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330200625) do
+
+ActiveRecord::Schema.define(version: 20150330195256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
 
   create_table "sitcoms", force: :cascade do |t|
     t.integer  "user_id",     null: false
@@ -24,6 +26,12 @@ ActiveRecord::Schema.define(version: 20150330200625) do
     t.integer  "end_year"
     t.string   "genre"
     t.string   "network"
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "user_id",    null: false
+    t.integer  "sitcom_id"
+    t.integer  "rating",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
