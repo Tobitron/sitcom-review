@@ -17,13 +17,15 @@ ActiveRecord::Schema.define(version: 20150330200625) do
   enable_extension "plpgsql"
 
   create_table "sitcoms", force: :cascade do |t|
-    t.integer "user_id",     null: false
-    t.string  "name",        null: false
-    t.text    "description", null: false
-    t.integer "start_year",  null: false
-    t.integer "end_year"
-    t.string  "genre"
-    t.string  "network"
+    t.integer  "user_id",     null: false
+    t.string   "name",        null: false
+    t.text     "description", null: false
+    t.integer  "start_year",  null: false
+    t.integer  "end_year"
+    t.string   "genre"
+    t.string   "network"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|

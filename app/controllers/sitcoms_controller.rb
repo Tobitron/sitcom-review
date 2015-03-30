@@ -11,7 +11,6 @@ class SitcomsController < ApplicationController
 
   def create
     @sitcom = current_user.sitcoms.build(sitcom_params)
-    binding.pry
     if @sitcom.save
       flash[:notice] = 'You have successfully added a sitcom!'
       redirect_to @sitcom

@@ -8,6 +8,7 @@ class CreateSitcoms < ActiveRecord::Migration
       t.integer :end_year
       t.string :genre
       t.string :network
+      t.timestamps
     end
   end
 end
