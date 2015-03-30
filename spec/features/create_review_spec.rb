@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'create a review' do
-  context 'as an authenticated user' do
+feature 'Feature: create a review.' do
+  context 'As an authenticated user' do
     let(:user) { FactoryGirl.create(:user) }
 
     before :each do
@@ -9,33 +9,32 @@ feature 'create a review' do
     end
 
     scenario 'create a new review' do
-      #tv_show = FactoryGirl.create(:tv_show)
-      #visit tv_show_path(tv_show)
+      #sitcom = FactoryGirl.create(:sitcom)
+      #visit sitcom_path(sitcom)
 
       visit new_review_path
       fill_in 'Body', with: 'This is the most amazing show ever created.'
       select('5', :from => 'Rating')
       click_button 'Create Review'
 
-      expect(page).to have_content('Successfully added your review.')
+      expect(page).to have_content('Successfully created your review.')
     end
 
-    scenario 'fail to create a review due to invalid input' do
-      #tv_show = FactoryGirl.create(:tv_show)
-      #visit tv_show_path(tv_show)
+    scenario 'Fail to create a review due to invalid input' do
+      #sitcom = FactoryGirl.create(:sitcom)
+      #visit sitcom_path(sitcom)
 
       visit new_review_path
       click_button 'Create Review'
-      expect(page).to have_content("Rating can't be blank.")
+      expect(page).to have_content("Rating is not a number")
     end
 
-    pending 'fail to create a duplicate review' do
-      #tv_show = FactoryGirl.create(:tv_show)
-      #visit tv_show_path(tv_show)
+    pending 'Fail to create a duplicate review'
+      #sitcom = FactoryGirl.create(:sitcom)
+      #visit sitcom_path(sitcom)
 
       #fill_in 'Body', with: 'This is the most amazing show ever created.'
       #select('5', :from => 'Rating')
       #click_button 'Create Review'
-    end
   end
 end

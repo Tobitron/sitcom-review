@@ -1,9 +1,21 @@
 class ReviewsController < ApplicationController
 
-  def create
+  def new
+    @review = Review.new
   end
 
-  def new
+  def create
+    @review = current_user.reviews.new(review_params)
+    if @review.save
+      flash[:notice] = 'Successfully created your review.'
+    else
+      flash[:alert] = @review.errors.full_messages
+    end
+    redirect_to reviews_path
+  end
+
+  def index
+    @reviews = Review.all.limit(10)
   end
 
   private
@@ -11,8 +23,5 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:body, :rating)
   end
-
-  
-
 
 end
