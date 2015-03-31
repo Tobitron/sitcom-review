@@ -10,7 +10,9 @@
     <li>Network's': <%= @sitcom.network %></li>
   </ul>
 
-  <%= link_to "Delete", @sitcom, method: :delete, :class => "button", confirm: "Are you sure?" %>
-  <%= link_to "Edit", edit_sitcom_path, :class => "button" %>
+  <% if @sitcom.owner?(current_user) %>
+    <%= link_to "Delete", @sitcom, method: :delete, :class => "button", data: {confirm: "Are you sure?"} %>
+    <%= link_to "Edit", edit_sitcom_path, :class => "button" %>
+  <% end %>
 
 </div>
