@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     @reviews = Review.all.limit(10)
   end
@@ -36,6 +38,18 @@ class ReviewsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @sitcom = Sitcom.find(params[:sitcom_id])
+    @review = Review.find(params[:id])
+    if @review.destroy
+      flash[:notice] = "Review deleted"
+    else
+      flash[:alert] = "Something went wrong"
+    end
+    redirect_to sitcom_path(@sitcom)
+  end
+
 
   private
 

@@ -22,6 +22,7 @@ class SitcomsController < ApplicationController
 
   def show
     @sitcom = Sitcom.find(params[:id])
+    @reviews = Review.where(sitcom_id: @sitcom.id)
   end
 
   private
