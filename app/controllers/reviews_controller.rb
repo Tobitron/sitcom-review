@@ -1,4 +1,8 @@
 class ReviewsController < ApplicationController
+  def index
+    @reviews = Review.all.limit(10)
+  end
+
   def new
     @sitcom = Sitcom.find(params[:sitcom_id])
     @review = Review.new
@@ -17,8 +21,20 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def index
-    @reviews = Review.all.limit(10)
+  def edit
+    @sitcom = Sitcom.find(params[:sitcom_id])
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @sitcom = Sitcom.find(params[:sitcom_id])
+    if @review.update_attributes(review_params)
+      flash[:notice] = 'Review updated!'
+      redirect_to sitcom_path(@sitcom)
+    else
+      render :edit
+    end
   end
 
   private

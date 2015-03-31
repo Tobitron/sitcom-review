@@ -26,13 +26,13 @@ feature 'Feature: create a review.' do
     end
 
     scenario 'fail to create a duplicate review' do
-      # new_user = FactoryGirl.create(:user)
       sitcom = FactoryGirl.create(:sitcom)
       Review.create(body: "This is the most amazing show ever created.", user_id: user.id, sitcom_id: sitcom.id, rating: 5)
       visit new_sitcom_review_path(sitcom)
       fill_in 'Body', with: 'This is the most amazing show ever created.'
       select('5', :from => 'Rating')
       click_button 'Create Review'
+      expect(page).to have_content("You have already reviewed this show.")
     end
   end
 end
