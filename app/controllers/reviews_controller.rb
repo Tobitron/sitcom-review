@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @reviews = Review.all.limit(10)
@@ -49,7 +49,6 @@ class ReviewsController < ApplicationController
     end
     redirect_to sitcom_path(@sitcom)
   end
-
 
   private
 
