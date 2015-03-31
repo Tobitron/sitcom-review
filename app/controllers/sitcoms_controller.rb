@@ -1,9 +1,11 @@
 class SitcomsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only:
+  [:new, :create, :edit, :update, :destroy]
   before_action :fetch_sitcom, only: [:show, :edit, :destroy]
 
   def index
-    @sitcoms = Sitcom.all.limit(20).sort_by { |sitcom| sitcom.start_year }.reverse
+    sitcoms = Sitcom.all.limit(20)
+    @sitcoms = sitcoms.sort_by { |sitcom| sitcom.start_year }.reverse
   end
 
   def new

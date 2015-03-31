@@ -1,14 +1,16 @@
 class Sitcom < ActiveRecord::Base
   belongs_to :user
   has_many :reviews
-  validates :user_id, presence: true
+  validates :user_id,
+  presence: true
   validates :name,
   presence: true,
   uniqueness: true
   validates :description,
-    presence: true,
-    length: { minimum: 5 }
-  validates :start_year, presence: true
+  presence: true,
+  length: { minimum: 5 }
+  validates :start_year,
+  presence: true
 
   def genre
     self[:genre] || "N/A"
