@@ -12,7 +12,7 @@ feature 'Feature: updating reviews' do
       review = FactoryGirl.create(:review)
       visit edit_sitcom_review_path(review.sitcom, review)
       fill_in 'Body', with: 'I really like show so much that I edited it.'
-      select(5, :from => 'Rating')
+      select(5, from: 'Rating')
       click_on 'Update Review'
       expect(page).to have_content("Review updated!")
     end

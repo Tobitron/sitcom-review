@@ -12,7 +12,7 @@ feature 'Feature: create a review.' do
       sitcom = FactoryGirl.create(:sitcom)
       visit new_sitcom_review_path(sitcom)
       fill_in 'Body', with: 'This is the most amazing show ever created.'
-      select(5, :from => 'Rating')
+      select(5, from: 'Rating')
       click_button 'Create Review'
 
       expect(page).to have_content('Successfully created your review.')
@@ -31,7 +31,7 @@ feature 'Feature: create a review.' do
                     user_id: user.id, sitcom_id: sitcom.id, rating: 5)
       visit new_sitcom_review_path(sitcom)
       fill_in 'Body', with: 'This is the most amazing show ever created.'
-      select('5', :from => 'Rating')
+      select('5', from: 'Rating')
       click_button 'Create Review'
       expect(page).to have_content("You have already reviewed this show.")
     end
