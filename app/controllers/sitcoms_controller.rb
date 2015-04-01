@@ -22,6 +22,7 @@ class SitcomsController < ApplicationController
 
   def show
     @sitcom = Sitcom.find(params[:id])
+    @reviews = @sitcom.reviews
   end
 
   private

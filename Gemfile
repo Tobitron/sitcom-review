@@ -32,6 +32,9 @@ group :development, :test do
   gem 'coveralls', require: false
 end
 
+group :test do
+  gem 'database_cleaner'
+end
 
 gem 'rspec-rails', group: [:development, :test]
 gem 'capybara', group: [:development, :test]
