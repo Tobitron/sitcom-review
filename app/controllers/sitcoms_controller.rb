@@ -1,6 +1,5 @@
 class SitcomsController < ApplicationController
-  before_action :authenticate_user!, only:
-  [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :fetch_sitcom, only: [:show, :edit, :destroy]
 
   def index
@@ -23,6 +22,7 @@ class SitcomsController < ApplicationController
   end
 
   def show
+    @reviews = @sitcom.reviews
   end
 
   def edit

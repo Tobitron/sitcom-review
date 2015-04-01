@@ -1,14 +1,18 @@
 class Sitcom < ActiveRecord::Base
   belongs_to :user
   has_many :reviews
-  validates :user_id,
+
+  validates :user,
     presence: true
+
   validates :name,
     presence: true,
     uniqueness: true
+
   validates :description,
     presence: true,
     length: { minimum: 5 }
+    
   validates :start_year,
     presence: true
 

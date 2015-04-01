@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331153118) do
+ActiveRecord::Schema.define(version: 20150331161814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20150331153118) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "reviews", ["user_id", "sitcom_id"], name: "index_reviews_on_user_id_and_sitcom_id", unique: true, using: :btree
 
   create_table "sitcoms", force: :cascade do |t|
     t.integer  "user_id",     null: false
