@@ -1,7 +1,6 @@
 <div class="row">
   <div class="large-12">
     <h1>Sitcoms</h1>
-
     <ul>
       <% @sitcoms.each do |sitcom| %>
         <li><%= link_to sitcom.name, sitcom_path(sitcom) %></li>
