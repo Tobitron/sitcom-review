@@ -4,8 +4,7 @@
 
     <ul>
       <% @sitcoms.each do |sitcom| %>
-        <li><%= link_to (sitcom) do %><%= sitcom.name %></li>
-        <% end %>
+        <li><%= link_to sitcom.name, sitcom_path(sitcom) %></li>
       <% end %>
     </ul>
 

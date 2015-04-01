@@ -4,8 +4,7 @@ class SitcomsController < ApplicationController
   before_action :fetch_sitcom, only: [:show, :edit, :destroy]
 
   def index
-    sitcoms = Sitcom.all.limit(20)
-    @sitcoms = sitcoms.sort_by { |sitcom| sitcom.start_year }.reverse
+    @sitcoms = Sitcom.order(start_year: :desc)
   end
 
   def new
