@@ -7,8 +7,8 @@
 
   <%= f.text_field :name %>
   <%= f.text_area :description %>
-  <%= f.date_field :start_year %>
-  <%= f.date_field :end_year %>
+  <%= f.select :start_year, (1900..Time.now.year).to_a.reverse %>
+  <%= f.select :end_year, (1900..Time.now.year).to_a.reverse, include_blank: true%>
   <%= f.text_field :genre %>
   <%= f.text_field :network %>
   <%= f.submit %>

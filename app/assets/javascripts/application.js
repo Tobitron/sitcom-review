@@ -15,4 +15,8 @@
 //= require foundation
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(document).foundation();
+
+$(function() {
+  $('.flash-message').delay(1500).fadeOut(600);
+});

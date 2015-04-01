@@ -1,8 +1,9 @@
 class SitcomsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :fetch_sitcom, only: [:show, :edit, :destroy]
 
   def index
-    @sitcoms = Sitcom.all.limit(20)
+    @sitcoms = Sitcom.order(start_year: :desc)
   end
 
   def new
@@ -21,13 +22,40 @@ class SitcomsController < ApplicationController
   end
 
   def show
-    @sitcom = Sitcom.find(params[:id])
     @reviews = @sitcom.reviews
+  end
+
+  def edit
+  end
+
+  def update
+    @sitcom = current_user.sitcoms.find(params[:id])
+    if @sitcom.update(sitcom_params)
+      flash[:notice] = 'Sitcom Updated'
+      redirect_to sitcom_path
+    else
+      flash[:alert] = 'Error: Sitcom not updated'
+      render :edit
+    end
+  end
+
+  def destroy
+    if @sitcom.destroy
+      flash[:notice] = 'Sitcom Deleted'
+      redirect_to root_path
+    else
+      flash[:alert] = 'Error: Sitcom not Deleted'
+      render :show
+    end
   end
 
   private
 
   def sitcom_params
     params.require(:sitcom).permit(:name, :description, :start_year, :end_year, :genre, :network)
+  end
+
+  def fetch_sitcom
+    @sitcom = Sitcom.find(params[:id])
   end
 end

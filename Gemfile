@@ -30,6 +30,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry'
   gem 'coveralls', require: false
+  gem 'launchy'
 end
 
 group :test do

@@ -2,4 +2,10 @@
   <div class="large-12">
     <h1>Sitcoms</h1>
 
+    <ul>
+      <% @sitcoms.each do |sitcom| %>
+        <li><%= link_to sitcom.name, sitcom_path(sitcom) %></li>
+      <% end %>
+    </ul>
+
     <%= link_to "Add New Sitcom", new_sitcom_path, :class => "button" %>

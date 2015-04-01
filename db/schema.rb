@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20150331161814) do
     t.datetime "updated_at"
   end
 
+  add_index "sitcoms", ["name"], name: "index_sitcoms_on_name", unique: true, using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
