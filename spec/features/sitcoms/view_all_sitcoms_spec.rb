@@ -1,13 +1,16 @@
 require 'rails_helper'
 
 feature 'any user views a list of all sitcoms' do
-  context 'as an authorized user' do
-    let(:user) { FactoryGirl.create(:user) }
+  context 'as a visitor' do
 
-    before :each do
-      sign_in_as user
+    scenario 'visitor views a list of all sitcoms' do
+      FactoryGirl.create(:sitcom)
+      FactoryGirl.create(:sitcom)
+      FactoryGirl.create(:sitcom)
+
+      visit sitcoms_path
+      save_and_open_page
+      expect(page).to have_content("Futurama")
     end
-
-    pending 'user views list of all sitcoms' 
   end
 end
