@@ -28,7 +28,7 @@ class Sitcom < ActiveRecord::Base
     self[:end_year] || "Still Running"
   end
 
-  def owner?(current_user)
+  def owner_or_admin?(current_user)
     if current_user == nil
       return false
     else

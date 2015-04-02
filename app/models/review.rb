@@ -8,10 +8,8 @@ class Review < ActiveRecord::Base
   validates :sitcom, presence: true
   validates_uniqueness_of :user_id, scope: [:sitcom_id], message: "You have already reviewed this show."
 
-  def owner?(current_user)
-    if current_user == nil
-      return false
-    else
+  def owner_or_admin?(current_user)
+    unless current_user == nil
       user == current_user || current_user.admin?
     end
   end
