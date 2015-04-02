@@ -22,7 +22,7 @@ class SitcomsController < ApplicationController
   end
 
   def show
-    @reviews = @sitcom.reviews.order(created_at: :desc).page params[:page]
+    @reviews = @sitcom.reviews.newest_first.page params[:page]
   end
 
   def edit

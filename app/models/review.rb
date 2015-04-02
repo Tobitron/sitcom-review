@@ -8,6 +8,8 @@ class Review < ActiveRecord::Base
   validates :sitcom, presence: true
   validates_uniqueness_of :user_id, scope: [:sitcom_id], message: "You have already reviewed this show."
 
+  scope :newest_first, -> { order(created_at: :desc) }
+
   def owner?(current_user)
     user == current_user
   end

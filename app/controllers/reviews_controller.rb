@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @reviews = Review.order(created_at: :desc).page params[:page]
+    @reviews = Review.newest_first.page params[:page]
   end
 
   def new
