@@ -29,9 +29,7 @@ class Sitcom < ActiveRecord::Base
   end
 
   def owner_or_admin?(current_user)
-    if current_user == nil
-      return false
-    else
+    unless current_user == nil
       user == current_user || current_user.admin?
     end
   end

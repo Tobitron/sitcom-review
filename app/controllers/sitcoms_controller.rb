@@ -1,7 +1,6 @@
 class SitcomsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :fetch_sitcom, only: [:show, :edit, :destroy, :update]
-  # before_action :authorize_user, except: [:index, :show]
 
   def index
     @sitcoms = Sitcom.order(start_year: :desc)
@@ -59,4 +58,3 @@ class SitcomsController < ApplicationController
     @sitcom = Sitcom.find(params[:id])
   end
 end
-

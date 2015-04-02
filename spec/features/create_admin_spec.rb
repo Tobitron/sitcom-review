@@ -15,7 +15,7 @@ feature 'Feature: create an admin.' do
 
     scenario 'edit a sitcom' do
       sign_in_as user
-      sitcom = FactoryGirl.create(:sitcom, user: user )
+      sitcom = FactoryGirl.create(:sitcom, user: user)
       sign_out_as user
       sign_in_as admin
       visit edit_sitcom_path(sitcom)
