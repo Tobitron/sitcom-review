@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :sitcoms
   has_many :comments
+
+  def admin?
+    role == "admin"
+  end
 end

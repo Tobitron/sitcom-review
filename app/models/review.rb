@@ -8,10 +8,11 @@ class Review < ActiveRecord::Base
   validates :user, presence: true
   validates :sitcom, presence: true
   validates_uniqueness_of :user_id, scope: [:sitcom_id], message: "You have already reviewed this show."
-
   scope :newest_first, -> { order(created_at: :desc) }
 
-  def owner?(current_user)
-    user == current_user
+  def owner_or_admin?(current_user)
+    unless current_user == nil
+      user == current_user || current_user.admin?
+    end
   end
 end

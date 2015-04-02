@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'user deletes sitcom' do
 
   context 'as an authorized user' do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, role: "member") }
 
     before :each do
       sign_in_as user
@@ -25,7 +25,7 @@ feature 'user deletes sitcom' do
       expect(page).to_not have_content('The Simpsons')
     end
 
-    scenario 'user deletes a sitcom they submitted' do
+    scenario 'user cannot delete if not signed in' do
       visit new_sitcom_path
 
       fill_in 'sitcom_name', with: 'The Simpsons'
@@ -33,10 +33,9 @@ feature 'user deletes sitcom' do
       select 1995, from: 'sitcom_start_year'
       fill_in 'sitcom_genre', with: 'Cartoon Comedy'
       fill_in 'sitcom_network', with: 'Fox'
-
       click_on 'Create Sitcom'
       click_on 'Sign Out'
-      click_on 'Simpsons'
+      click_on 'The Simpsons'
 
       expect(page).to_not have_content('Delete')
     end

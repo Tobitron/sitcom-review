@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Feature: create a review.' do
   context 'As an authenticated user' do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, role: "admin") }
 
     before :each do
       sign_in_as user
@@ -42,6 +42,5 @@ feature 'Feature: create a review.' do
       visit sitcom_path(review.sitcom)
       expect(page).to have_content("This show is soooooo gooood.")
     end
-
   end
 end
