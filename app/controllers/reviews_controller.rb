@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @reviews = Review.all.limit(10)
+    @reviews = Review.newest_first.page params[:page]
   end
 
   def new

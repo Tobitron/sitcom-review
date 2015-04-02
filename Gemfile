@@ -31,18 +31,19 @@ group :development, :test do
   gem 'pry'
   gem 'coveralls', require: false
   gem 'launchy'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'factory_girl'
+  gem 'valid_attribute'
+  gem 'shoulda-matchers', require: false
 end
 
 group :test do
   gem 'database_cleaner'
 end
 
-gem 'rspec-rails', group: [:development, :test]
-gem 'capybara', group: [:development, :test]
-gem 'launchy', group: [:development, :test]
-gem 'factory_girl', group: [:development, :test]
-gem 'valid_attribute', group: [:development, :test]
-gem 'shoulda-matchers', group: [:development, :test], require: false
+
 gem 'devise'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
+gem 'kaminari'
