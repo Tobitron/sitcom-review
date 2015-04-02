@@ -3,7 +3,7 @@ class SitcomsController < ApplicationController
   before_action :fetch_sitcom, only: [:show, :edit, :destroy]
 
   def index
-    @sitcoms = Sitcom.order(start_year: :desc)
+    @sitcoms = Sitcom.order(start_year: :desc).page params[:page]
   end
 
   def new
@@ -22,7 +22,7 @@ class SitcomsController < ApplicationController
   end
 
   def show
-    @reviews = @sitcom.reviews
+    @reviews = @sitcom.reviews.newest_first.page params[:page]
   end
 
   def edit
