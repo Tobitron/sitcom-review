@@ -1,6 +1,6 @@
 class Sitcom < ActiveRecord::Base
   belongs_to :user
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   validates :user,
     presence: true
@@ -12,7 +12,7 @@ class Sitcom < ActiveRecord::Base
   validates :description,
     presence: true,
     length: { minimum: 5 }
-    
+
   validates :start_year,
     presence: true
 
@@ -28,7 +28,9 @@ class Sitcom < ActiveRecord::Base
     self[:end_year] || "Still Running"
   end
 
-  def owner?(current_user)
-    user == current_user
+  def owner_or_admin?(current_user)
+    unless current_user == nil
+      user == current_user || current_user.admin?
+    end
   end
 end

@@ -1,6 +1,6 @@
 class SitcomsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :fetch_sitcom, only: [:show, :edit, :destroy]
+  before_action :fetch_sitcom, only: [:show, :edit, :destroy, :update]
 
   def index
     @sitcoms = Sitcom.order(start_year: :desc).page params[:page]
@@ -29,7 +29,6 @@ class SitcomsController < ApplicationController
   end
 
   def update
-    @sitcom = current_user.sitcoms.find(params[:id])
     if @sitcom.update(sitcom_params)
       flash[:notice] = 'Sitcom Updated'
       redirect_to sitcom_path

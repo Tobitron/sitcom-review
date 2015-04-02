@@ -8,4 +8,9 @@ module AuthenticationHelper
 
     click_on 'Log in'
   end
+
+  def sign_out_as(_user)
+    visit root_path
+    click_on 'Sign Out'
+  end
 end

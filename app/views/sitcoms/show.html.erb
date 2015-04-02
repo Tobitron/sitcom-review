@@ -9,8 +9,7 @@
     <li>Genre: <%= @sitcom.genre %></li>
     <li>Network's': <%= @sitcom.network %></li>
   </ul>
-
-  <% if @sitcom.owner?(current_user) %>
+  <% if @sitcom.owner_or_admin?(current_user) %>
     <%= link_to "Delete", @sitcom, method: :delete, :class => "button", data: {confirm: "Are you sure?"} %>
     <%= link_to "Edit", edit_sitcom_path, :class => "button" %>
   <% end %>
@@ -21,7 +20,7 @@
   <% @reviews.each do |review| %>
     <ul class="reviews">
       <li><%= review.body %> Rating: <%= review.rating %></li>
-      <% if review.owner?(current_user) %>
+      <% if review.owner_or_admin?(current_user) %>
         <%= link_to "Edit", edit_sitcom_review_path(@sitcom, review), :class => "button" %>
         <%= link_to "Delete", [@sitcom, review], method: :delete, :class => "button", data: {confirm: "Are you sure?"} %>
       <% end %>
