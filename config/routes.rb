@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   resources :sitcoms do
     resources :reviews
   end
+
+  resources :reviews do
+    resources :comments
+  end
 end

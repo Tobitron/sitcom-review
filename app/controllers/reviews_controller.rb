@@ -24,13 +24,13 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @sitcom = Sitcom.find(params[:sitcom_id])
-    @review = @sitcom.reviews.find(params[:id])
+    @review = Review.find(params[:id])
+    @sitcom = @review.sitcom
   end
 
   def update
-    @sitcom = Sitcom.find(params[:sitcom_id])
-    @review = @sitcom.reviews.find(params[:id])
+    @review = Review.find(params[:id])
+    @sitcom = @review.sitcom
 
     if @review.update(review_params)
       flash[:notice] = 'Review updated!'
@@ -41,8 +41,8 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @sitcom = Sitcom.find(params[:sitcom_id])
     @review = Review.find(params[:id])
+    @sitcom = @review.sitcom
     if @review.destroy
       flash[:notice] = "Review deleted"
     else
