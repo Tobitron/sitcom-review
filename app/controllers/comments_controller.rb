@@ -13,14 +13,14 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
     @review = Review.find(params[:review_id])
-    @sitcom = @review.sitcom
+    sitcom = @review.sitcom
     @comment.review_id = params[:review_id]
     if @comment.save
       flash[:notice] = 'Your comment was added!'
     else
       flash[:alert] = "Comment can\'t be blank."
     end
-    redirect_to @sitcom
+    redirect_to sitcom
   end
 
   def edit
@@ -28,20 +28,20 @@ class CommentsController < ApplicationController
 
   def update
     @comment = current_user.comments.find(params[:id])
-    @sitcom = @comment.review.sitcom
+    sitcom = @comment.review.sitcom
     if @comment.update(comment_params)
       flash[:notice] = 'Comment Updated'
     else
       flash[:alert] = 'Error: Comment not updated'
     end
-    redirect_to @sitcom
+    redirect_to sitcom
   end
 
   def destroy
-    @sitcom = @comment.review.sitcom
+    sitcom = @comment.review.sitcom
     @comment.destroy
     flash[:notice] = 'Comment Deleted'
-    redirect_to @sitcom
+    redirect_to sitcom
   end
 
   private
