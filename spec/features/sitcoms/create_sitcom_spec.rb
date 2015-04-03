@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'user creates sitcom' do
-
   context 'as an authorized user' do
     let(:user) { FactoryGirl.create(:user) }
 

@@ -19,7 +19,6 @@ feature 'user deletes sitcom' do
       fill_in 'sitcom_network', with: 'Fox'
 
       click_on 'Create Sitcom'
-
       click_on 'Delete'
 
       expect(page).to_not have_content('The Simpsons')
