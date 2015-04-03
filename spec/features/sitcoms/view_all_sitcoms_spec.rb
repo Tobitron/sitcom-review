@@ -9,7 +9,6 @@ feature 'any user views a list of all sitcoms' do
       FactoryGirl.create(:sitcom)
 
       visit sitcoms_path
-      save_and_open_page
       expect(page).to have_content("Futurama")
     end
   end

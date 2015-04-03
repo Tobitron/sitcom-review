@@ -36,11 +36,5 @@ feature 'Feature: create a review.' do
       click_button 'Create Review'
       expect(page).to have_content("You have already reviewed this show.")
     end
-
-    scenario 'See all reviews on the sitcom show page' do
-      review = FactoryGirl.create(:review)
-      visit sitcom_path(review.sitcom)
-      expect(page).to have_content("This show is soooooo gooood.")
-    end
   end
 end

@@ -36,6 +36,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = 'Review updated!'
       redirect_to sitcom_path(@sitcom)
     else
+      flash[:alert] = @review.errors.full_messages
       render :edit
     end
   end
