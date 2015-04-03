@@ -13,13 +13,12 @@ feature 'user deletes sitcom' do
       visit new_sitcom_path
 
       fill_in 'sitcom_name', with: 'The Simpsons'
-      fill_in 'sitcom_description', with: 'this is a description for the simpsons'
+      fill_in 'sitcom_description', with: 'description for the simpsons'
       select 1995, from: 'sitcom_start_year'
       fill_in 'sitcom_genre', with: 'Cartoon Comedy'
       fill_in 'sitcom_network', with: 'Fox'
 
       click_on 'Create Sitcom'
-
       click_on 'Delete'
 
       expect(page).to_not have_content('The Simpsons')
@@ -29,7 +28,7 @@ feature 'user deletes sitcom' do
       visit new_sitcom_path
 
       fill_in 'sitcom_name', with: 'The Simpsons'
-      fill_in 'sitcom_description', with: 'this is a description for the simpsons'
+      fill_in 'sitcom_description', with: 'description for the simpsons'
       select 1995, from: 'sitcom_start_year'
       fill_in 'sitcom_genre', with: 'Cartoon Comedy'
       fill_in 'sitcom_network', with: 'Fox'

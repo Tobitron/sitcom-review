@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'user creates sitcom' do
-
   context 'as an authorized user' do
     let(:user) { FactoryGirl.create(:user) }
 
@@ -13,7 +12,7 @@ feature 'user creates sitcom' do
       visit new_sitcom_path
 
       fill_in 'sitcom_name', with: 'The Simpsons'
-      fill_in 'sitcom_description', with: 'this is a description for the simpsons'
+      fill_in 'sitcom_description', with: 'description for the simpsons'
       select 1995, from: 'sitcom_start_year'
       fill_in 'sitcom_genre', with: 'Cartoon Comedy'
       fill_in 'sitcom_network', with: 'Fox'
@@ -21,7 +20,7 @@ feature 'user creates sitcom' do
       click_on 'Create Sitcom'
 
       expect(page).to have_content('The Simpsons')
-      expect(page).to have_content('this is a description for the simpsons')
+      expect(page).to have_content('description for the simpsons')
       expect(page).to have_content('1995')
       expect(page).to have_content('Cartoon Comedy')
       expect(page).to have_content('Fox')
@@ -31,7 +30,7 @@ feature 'user creates sitcom' do
       visit new_sitcom_path
 
       fill_in 'sitcom_name', with: ''
-      fill_in 'sitcom_description', with: 'this is a description for the simpsons'
+      fill_in 'sitcom_description', with: 'description for the simpsons'
       select '1995', from: 'sitcom_start_year'
       fill_in 'sitcom_genre', with: 'Cartoon Comedy'
       fill_in 'sitcom_network', with: 'Fox'

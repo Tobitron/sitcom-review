@@ -29,17 +29,12 @@ feature 'Feature: create a review.' do
       sitcom = FactoryGirl.create(:sitcom)
       Review.create(body: "This is the most amazing show ever created.",
                     user_id: user.id, sitcom_id: sitcom.id, rating: 5)
+
       visit new_sitcom_review_path(sitcom)
       fill_in 'Body', with: 'This is the most amazing show ever created.'
       select('5', from: 'Rating')
       click_button 'Create Review'
       expect(page).to have_content("You have already reviewed this show.")
-    end
-
-    scenario 'See all reviews on the sitcom show page' do
-      review = FactoryGirl.create(:review)
-      visit sitcom_path(review.sitcom)
-      expect(page).to have_content("This show is soooooo gooood.")
     end
   end
 end

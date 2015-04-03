@@ -7,7 +7,7 @@
     <li>Start Year: <%= @sitcom.start_year %></li>
     <li>End Year: <%= @sitcom.end_year %></li>
     <li>Genre: <%= @sitcom.genre %></li>
-    <li>Network's': <%= @sitcom.network %></li>
+    <li>Network(s): <%= @sitcom.network %></li>
   </ul>
   <% if @sitcom.owner_or_admin?(current_user) %>
     <%= link_to "Delete", @sitcom, method: :delete, :class => "button", data: {confirm: "Are you sure?"} %>
@@ -16,14 +16,23 @@
 
   <%= link_to "Write Review", new_sitcom_review_path(@sitcom), :class => "button" %>
 
+
   <h3> Reviews </h3>
   <% @reviews.each do |review| %>
     <ul class="reviews">
       <li><%= review.body %> Rating: <%= review.rating %></li>
+
       <% if review.owner_or_admin?(current_user) %>
-        <%= link_to "Edit", edit_sitcom_review_path(@sitcom, review), :class => "button" %>
-        <%= link_to "Delete", [@sitcom, review], method: :delete, :class => "button", data: {confirm: "Are you sure?"} %>
+        <%= link_to "Edit", edit_review_path(review), :class => "button" %>
+        <%= link_to "Delete", review, method: :delete, :class => "button", data: {confirm: "Are you sure?"} %>
       <% end %>
+
+      <%= link_to "Comment on Review", new_review_comment_path(review), :class => "button" %>
+
+      <% review.comments.each_with_index do |comment, i| %>
+        <p> Comment <%= i + 1 %>: <%= comment.body %> </p>
+      <% end %>
+
     </ul>
   <% end %>
   <%= paginate @reviews %>
