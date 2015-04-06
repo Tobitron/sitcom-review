@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150406141604) do
     t.string   "network"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
   end
 
   add_index "sitcoms", ["name"], name: "index_sitcoms_on_name", unique: true, using: :btree
