@@ -2,6 +2,7 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :sitcom
   has_many :comments, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   validates :rating, presence: { message: "You must select a rating." },
              numericality: { only_integer: true, greater_than: 0, less_than: 6 }

@@ -4,9 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :sitcoms
-  has_many :comments
+  has_many :comments, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   def admin?
     role == "admin"
