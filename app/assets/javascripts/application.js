@@ -15,8 +15,33 @@
 //= require foundation
 //= require_tree .
 
-$(document).foundation();
+$(function(){ $(document).foundation(); });
 
 $(function() {
   $('.flash-messages').delay(1500).fadeOut(600);
 });
+
+$('.set_rating').raty({
+                  path: '/assets/',
+                  score: function(){
+                    return $(this).attr('data-score');
+                  }
+});
+
+$('.avg_rating').raty({
+                 path: '/assets/',
+                 readOnly: true,
+                 score: function(){
+                   return $(this).attr('data-score');
+                 }
+});
+
+$('.review_rating').raty({
+                    path: '/assets/',
+                    readOnly:true,
+                    score: function(){
+                      return $(this).attr('data-score');
+                    }
+});
+
+//when you click it should set current_user's review.rating to the selected star

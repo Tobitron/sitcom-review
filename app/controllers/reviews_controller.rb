@@ -14,6 +14,7 @@ class ReviewsController < ApplicationController
     @sitcom = Sitcom.find(params[:sitcom_id])
     @review = current_user.reviews.new(review_params)
     @review.sitcom = @sitcom
+    @review.rating = params[:score]
     if @review.save
       flash[:notice] = 'Successfully created your review.'
       redirect_to @sitcom
@@ -55,6 +56,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:body, :rating)
+    params.require(:review).permit(:body, :rating, :score)
   end
 end

@@ -8,24 +8,16 @@ feature 'Feature: updating reviews' do
       sign_in_as user
     end
 
-    scenario 'I can successfully update a review' do
+    scenario 'I can successfully update a review', js:true do
       review = FactoryGirl.create(:review, user: user)
       visit edit_review_path(review)
       fill_in 'Body', with: 'I really like this show so much that I edited it.'
-      select(5, from: 'Rating')
+      find(:xpath, "//img[@alt='4']").click
       click_on 'Update Review'
       expect(page).to have_content("Review updated!")
     end
 
-    scenario "I can\'t update a review if I try to submit invalid input" do
-      review = FactoryGirl.create(:review, user: user)
-      visit edit_review_path(review)
-      select('Select a rating', from: 'Rating')
-      click_on 'Update Review'
-      expect(page).to have_content("is not a number")
-    end
-
-    scenario 'I can\'t update a review I didn\'t write if I\'m not an admin' do
+    scenario 'I can\'t update a review I didn\'t write if I\'m not an admin', js:true do
       review = FactoryGirl.create(:review)
       visit edit_review_path(review)
       expect(page).to_not have_content("Update Review")

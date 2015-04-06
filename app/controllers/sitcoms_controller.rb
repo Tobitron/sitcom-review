@@ -23,6 +23,8 @@ class SitcomsController < ApplicationController
 
   def show
     @reviews = @sitcom.reviews.newest_first.page params[:page]
+    @avg_rating = 0
+    @avg_rating = @sitcom.reviews.average(:rating).round(2) unless @sitcom.reviews.blank?
   end
 
   def edit

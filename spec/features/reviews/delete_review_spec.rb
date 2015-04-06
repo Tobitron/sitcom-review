@@ -11,7 +11,7 @@ feature 'Feature: deleting reviews' do
     scenario 'I can successfully delete a review' do
       review = FactoryGirl.create(:review, user: user)
       visit sitcom_path(review.sitcom)
-      within(:css, "ul.reviews") do
+      within(:css, ".review") do
         click_on "Delete"
       end
       expect(page).to have_content("Review deleted")
@@ -20,7 +20,7 @@ feature 'Feature: deleting reviews' do
     scenario "I can\'t delete a review I didn\'t write since I\'m not an admin" do
       review = FactoryGirl.create(:review)
       visit sitcom_path(review.sitcom)
-      within(:css, "ul.reviews") do
+      within(:css, ".review") do
         expect(page).to_not have_content("Delete")
       end
     end
