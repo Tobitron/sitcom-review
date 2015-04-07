@@ -2,6 +2,8 @@ class Sitcom < ActiveRecord::Base
   belongs_to :user
   has_many :reviews, dependent: :destroy
 
+  mount_uploader :image, ImageUploader
+
   validates :user,
     presence: true
 
