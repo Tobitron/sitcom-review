@@ -14,7 +14,7 @@ feature 'Feature: create a review.' do
       visit new_sitcom_review_path(sitcom)
 
       fill_in 'Body', with: 'This is the most amazing show ever created.'
-      select(5, from: 'Rating')
+      find(:xpath, "//img[@alt='5']").click
       click_button 'Create Review'
 
       expect(page).to have_content('Successfully created your review.')
