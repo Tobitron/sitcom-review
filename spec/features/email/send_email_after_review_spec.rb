@@ -8,13 +8,13 @@ feature 'Feature: create a review.' do
       sign_in_as user
     end
 
-    scenario "create a new review for a sitcom" do
+    scenario "create a new review for a sitcom", js: true do
 
       sitcom = FactoryGirl.create(:sitcom)
       visit new_sitcom_review_path(sitcom)
 
       fill_in 'Body', with: 'This is the most amazing show ever created.'
-      select(5, from: 'Rating')
+      find(:xpath, "//img[@alt='5']").click
       click_button 'Create Review'
 
       expect(page).to have_content('Successfully created your review.')
