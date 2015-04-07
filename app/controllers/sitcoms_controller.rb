@@ -53,7 +53,7 @@ class SitcomsController < ApplicationController
   private
 
   def sitcom_params
-    params.require(:sitcom).permit(:name, :description, :start_year, :end_year, :genre, :network)
+    params.require(:sitcom).permit(:name, :description, :start_year, :end_year, :genre, :network, :image)
   end
 
   def fetch_sitcom

@@ -16,6 +16,7 @@ class ReviewsController < ApplicationController
     @review.sitcom = @sitcom
     @review.rating = params[:score]
     if @review.save
+      ReviewNotifier.new_review(@review).deliver_later
       flash[:notice] = 'Successfully created your review.'
       redirect_to @sitcom
     else
