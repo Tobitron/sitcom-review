@@ -2,6 +2,7 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :sitcom
   has_many :comments, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   validates :rating, presence: { message: "You must select a rating." },
              numericality: { only_integer: true, greater_than: 0, less_than: 6 }
@@ -14,5 +15,17 @@ class Review < ActiveRecord::Base
     unless current_user == nil
       user == current_user || current_user.admin?
     end
+  end
+
+  def sum_of_votes
+    sum = 0
+    if votes.empty?
+      0
+    else
+      Vote.where(review_id: id).each do |vote|
+        sum += vote.value
+      end
+    end
+    sum
   end
 end

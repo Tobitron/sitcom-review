@@ -8,7 +8,7 @@ feature 'Feature: create a review.' do
       sign_in_as user
     end
 
-    scenario "create a new review for a sitcom" do
+    scenario "create a new review for a sitcom", js: true do
 
       sitcom = FactoryGirl.create(:sitcom)
       visit new_sitcom_review_path(sitcom)
