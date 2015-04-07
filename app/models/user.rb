@@ -12,4 +12,10 @@ class User < ActiveRecord::Base
   def admin?
     role == "admin"
   end
+
+  def user_vote_by_review(review)
+    binding.pry
+    votes.find_by(review: review)
+  end
+
 end

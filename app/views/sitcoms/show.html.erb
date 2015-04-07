@@ -21,11 +21,7 @@
     <ul class="reviews">
       <%= link_to "⬆", review_upvotes_path(review), method: :post, :class => "button tiny" %>
       <%= link_to "⬇", review_downvotes_path(review), method: :post, :class => "button tiny" %>
-      <% sum = 0 %>
-      <% Vote.where(review_id: review.id).each do |vote| %>
-        <% sum += vote.value %>
-      <% end %>
-      <%= sum %>
+      <%= review.sum_of_votes %>
       <li><%= review.body %> Rating: <%= review.rating %></li>
 
       <% if review.owner_or_admin?(current_user) %>

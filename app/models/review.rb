@@ -16,4 +16,16 @@ class Review < ActiveRecord::Base
       user == current_user || current_user.admin?
     end
   end
+
+  def sum_of_votes
+    sum = 0
+    if self.votes.empty?
+      0
+    else
+      Vote.where(review_id: self.id).each do |vote|
+        sum += vote.value
+      end
+    end
+    sum
+  end
 end

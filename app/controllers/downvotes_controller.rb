@@ -2,29 +2,28 @@ class DownvotesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @downvote = current_user.votes.new
+    @vote = current_user.votes.new
     @review = Review.find(params[:review_id])
     sitcom = @review.sitcom
-    @downvote.review_id = params[:review_id]
-    user_vote = User.find(current_user.id).votes.where(review_id: @review.id)
+    @vote.review_id = params[:review_id]
 
-    if user_vote.first == nil
-      @downvote.value = -1
-      if @downvote.save
-        flash[:notice] = "First downvote"
+    unless current_user.votes.where(review_id: @review.id).length > 1
+      user_vote = current_user.user_vote_by_review(@review)
+
+      if user_vote == nil
+        @vote.first_downvote
+      elsif user_vote.is_downvote?
+        user_vote.to_neutral
+      elsif user_vote.is_neutral? || user_vote.is_upvote?
+        user_vote.to_downvote
       else
-        flash[:notice] = "Something went wrong"
+        flash[:notice] = "Something Went VERY wrong"
       end
-    elsif user_vote.first.value == -1
-      user_vote.first.update_attributes(value:  0)
-      flash[:notice] = "Vote set to 0"
-    elsif user_vote.first.value == 0 || user_vote.first.value == 1
-      user_vote.first.update_attributes(value:  -1)
-      flash[:notice] = "Vote set to -1"
-    else
-      flash[:notice] = "Something Went VERYYYYY wrong"
-    end
+      redirect_to sitcom
 
-    redirect_to sitcom
+    else
+      flash[:notice] = "Something Went VERY wrong"
+      redirect_to sitcom
+    end
   end
 end
