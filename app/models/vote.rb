@@ -23,15 +23,15 @@ class Vote < ActiveRecord::Base
   end
 
   def is_upvote?
-    self.value == 1
+    value == 1
   end
 
   def is_downvote?
-    self.value == -1
+    value == -1
   end
 
   def is_neutral?
-    self.value == 0
+    value == 0
   end
 
   def to_upvote
@@ -45,6 +45,4 @@ class Vote < ActiveRecord::Base
   def to_neutral
     update_attributes(value:  0)
   end
-
-  #elsif user_vote.value == 0 || user_vote.value == -1
 end

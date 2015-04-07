@@ -19,10 +19,10 @@ class Review < ActiveRecord::Base
 
   def sum_of_votes
     sum = 0
-    if self.votes.empty?
+    if votes.empty?
       0
     else
-      Vote.where(review_id: self.id).each do |vote|
+      Vote.where(review_id: id).each do |vote|
         sum += vote.value
       end
     end

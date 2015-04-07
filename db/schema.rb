@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406141604) do
+ActiveRecord::Schema.define(version: 20150406142931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,10 +73,10 @@ ActiveRecord::Schema.define(version: 20150406141604) do
     t.integer  "user_id",    null: false
     t.integer  "review_id",  null: false
     t.integer  "value",      null: false
-
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "votes", ["user_id", "review_id"], name: "index_votes_on_user_id_and_review_id", unique: true, using: :btree
+
 end

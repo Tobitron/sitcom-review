@@ -14,8 +14,6 @@ class User < ActiveRecord::Base
   end
 
   def user_vote_by_review(review)
-    binding.pry
     votes.find_by(review: review)
   end
-
 end
