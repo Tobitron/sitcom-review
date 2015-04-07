@@ -33,12 +33,12 @@ feature 'Feature: create an admin.' do
       expect(page).to have_content("Sitcom Deleted")
     end
 
-    scenario 'I can successfully update a review' do
+    scenario 'I can successfully update a review', js:true do
       review = FactoryGirl.create(:review)
       sign_in_as admin
       visit edit_sitcom_review_path(review.sitcom, review)
-      fill_in 'Body', with: 'I really like show so much that I edited it.'
-      select(5, from: 'Rating')
+      fill_in 'Body', with: 'I really like this show so much that I edited it.'
+      find(:xpath, "//img[@alt='2']").click
       click_on 'Update Review'
       expect(page).to have_content("Review updated!")
     end
@@ -47,7 +47,7 @@ feature 'Feature: create an admin.' do
       review = FactoryGirl.create(:review)
       sign_in_as admin
       visit sitcom_path(review.sitcom)
-      within(:css, "ul.reviews") do
+      within(:css, ".review") do
         click_on "Delete"
       end
       expect(page).to have_content("Review deleted")

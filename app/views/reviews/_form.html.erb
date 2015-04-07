@@ -1,7 +1,8 @@
 <%= form_for [@sitcom, @review] do |f| %>
   <%= f.text_field :body %>
 
-  <%= f.select :rating, ['Select a rating', 5, 4, 3, 2, 1]  %>
+  <%= f.label :rating %>
+  <div class="set_rating" data-score = <%= @review.rating %>></div>
 
   <%= f.submit %>
 <% end %>

@@ -23,6 +23,8 @@ class SitcomsController < ApplicationController
 
   def show
     @reviews = @sitcom.reviews.newest_first.page params[:page]
+    @avg_rating = 0
+    @avg_rating = @sitcom.reviews.average(:rating).round(2) unless @sitcom.reviews.blank?
   end
 
   def edit
@@ -51,7 +53,7 @@ class SitcomsController < ApplicationController
   private
 
   def sitcom_params
-    params.require(:sitcom).permit(:name, :description, :start_year, :end_year, :genre, :network)
+    params.require(:sitcom).permit(:name, :description, :start_year, :end_year, :genre, :network, :image)
   end
 
   def fetch_sitcom
