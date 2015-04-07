@@ -37,9 +37,10 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'poltergeist'
 end
 
 gem 'devise'
-gem 'foundation-rails'
+gem 'foundation-rails', github: 'zurb/foundation-rails'
 gem 'foundation_rails_helper'
 gem 'kaminari'
