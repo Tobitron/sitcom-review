@@ -1,6 +1,8 @@
 AllCops:
   Exclude:
     - db/schema.rb
+    - app/assets/javascripts/jquery.raty.js
+    - app/assets/javascripts/jquery.raty.css
   #DisplayCopNames: true
 
 AccessorMethodName:
