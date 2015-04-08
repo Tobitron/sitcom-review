@@ -26,9 +26,17 @@
       <div class="review_rating" data-score= <%= review.rating %>></div>
 
       <div class="voting">
-        <%= link_to "⬆", review_upvotes_path(review), method: :post, :class => "tiny" %>
-        <%= link_to "⬇", review_downvotes_path(review), method: :post, :class => "tiny" %>
-        <%= review.sum_of_votes %>
+        <% if review.user_upvoted?(current_user) %>
+          <%= link_to "⬆", review_upvotes_path(review), method: :post, :class => "upvote" %>
+        <% else %>
+          <%= link_to "⬆", review_upvotes_path(review), method: :post %>
+        <% end %>
+        <% if review.user_downvoted?(current_user) %>
+          <%= link_to "⬇", review_downvotes_path(review), method: :post, :class => "downvote" %>
+        <% else %>
+          <%= link_to "⬇", review_downvotes_path(review), method: :post %>
+        <% end %>
+      <%= review.sum_of_votes %>
       </div>
 
       <p><%= review.body %> Rating: <%= review.rating %></p>
