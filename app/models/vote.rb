@@ -8,20 +8,6 @@ class Vote < ActiveRecord::Base
     self[:value] || 0
   end
 
-  def first_upvote
-    self.value = 1
-    unless self.save
-      flash[:notice] = "Something went wrong"
-    end
-  end
-
-  def first_downvote
-    self.value = -1
-    unless self.save
-      flash[:notice] = "Something went wrong"
-    end
-  end
-
   def is_upvote?
     value == 1
   end
@@ -44,5 +30,21 @@ class Vote < ActiveRecord::Base
 
   def to_neutral
     update_attributes(value:  0)
+  end
+
+  def upvote
+    if is_neutral? || is_downvote?
+      to_upvote
+    else
+      to_neutral
+    end
+  end
+
+  def downvote
+    if is_neutral? || is_upvote?
+      to_downvote
+    else
+      to_neutral
+    end
   end
 end
