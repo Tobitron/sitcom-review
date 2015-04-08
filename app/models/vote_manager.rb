@@ -4,35 +4,30 @@ class VoteManager
   def initialize(user, review)
     @user = user
     @review = review
-    @vote = user.votes.new
-    @vote.review_id = review.id
+    @vote = find_or_new_vote
   end
 
   def upvote
-    unless user.votes.where(review: @review).length > 1
-      user_vote = @user.user_vote_by_review(@review)
-
-      if user_vote == nil
-        vote.first_upvote
-      elsif user_vote.is_upvote?
-        user_vote.to_neutral
-      else user_vote.is_neutral? || user_vote.is_downvote?
-        user_vote.to_upvote
-      end
-    end
+    return if multiple_votes?
+    vote.upvote
   end
 
   def downvote
-    unless user.votes.where(review: @review).length > 1
-      user_vote = @user.user_vote_by_review(@review)
+    return if multiple_votes?
+    vote.downvote
+  end
 
-      if user_vote == nil
-        vote.first_downvote
-      elsif user_vote.is_downvote?
-        user_vote.to_neutral
-      else user_vote.is_neutral? || user_vote.is_upvote?
-        user_vote.to_downvote
-      end
-    end
+  private
+
+  def find_or_new_vote
+    existing_vote.present? ? existing_vote : user.votes.new(review: review, value: 0)
+  end
+
+  def existing_vote
+    user.votes.find_by(review: review)
+  end
+
+  def multiple_votes?
+    user.votes.where(review: review).length > 1
   end
 end
