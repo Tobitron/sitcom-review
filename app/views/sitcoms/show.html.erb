@@ -1,50 +1,73 @@
 <div class="row">
+  <div class="medium-4 columns">
+    <h2><%= @sitcom.name %></h2>
 
-  <h3><%= @sitcom.name %></h3>
+      <p><%= image_tag @sitcom.image_url %></p>
 
-  <%= image_tag @sitcom.image_url %>
+      <table>
+        <tbody>
+          <tr>
+            <td><strong>Description:</strong></td>
+            <td><%= @sitcom.description %></td>
+          </tr>
+          <tr>
+            <td><strong>Start Year:</strong></td>
+            <td><%= @sitcom.start_year %></td>
+          </tr>
+          <tr>
+            <td><strong>End Year:</strong></td>
+            <td><%= @sitcom.end_year %></td>
+          </tr>
+          <tr>
+            <td><strong>Genre:</strong></td>
+            <td><%= @sitcom.genre %></td>
+          </tr>
+          <tr>
+            <td><strong>Network(s):</strong></td>
+            <td><%= @sitcom.network %></td>
+          </tr>
+          <tr>
+            <td><strong>Average Rating:</strong></td>
+            <td><span class="avg_rating" data-score= <%= @avg_rating %>></span></td>
+          </tr>
+        </tbody>
+      </table>
 
-  <ul>
-    <li>Description: <%= @sitcom.description %></li>
-    <li>Start Year: <%= @sitcom.start_year %></li>
-    <li>End Year: <%= @sitcom.end_year %></li>
-    <li>Genre: <%= @sitcom.genre %></li>
-    <li>Network(s): <%= @sitcom.network %></li>
-    <li>Average Rating: <span class="avg_rating" data-score= <%= @avg_rating %>></span></li>
-  </ul>
+      <% if @sitcom.owner_or_admin?(current_user) %>
+        <%= link_to "Delete", @sitcom, method: :delete, :class => "button radius", data: {confirm: "Are you sure?"} %>
+        <%= link_to "Edit", edit_sitcom_path, :class => "button radius" %>
+      <% end %>
 
-  <% if @sitcom.owner_or_admin?(current_user) %>
-    <%= link_to "Delete", @sitcom, method: :delete, :class => "button", data: {confirm: "Are you sure?"} %>
-    <%= link_to "Edit", edit_sitcom_path, :class => "button" %>
-  <% end %>
+      <%= link_to "Write Review", new_sitcom_review_path(@sitcom), :class => "button radius" %>
+  </div>
 
-  <%= link_to "Write Review", new_sitcom_review_path(@sitcom), :class => "button" %>
+  <div class="medium-7 offset-1 columns">
+    <h3> Reviews </h3>
+    <% @reviews.each do |review| %>
+      <div class="review panel">
+        <div class="review_rating" data-score= <%= review.rating %>></div>
 
-  <h3> Reviews </h3>
-  <% @reviews.each do |review| %>
-    <div class="review panel">
-      <div class="review_rating" data-score= <%= review.rating %>></div>
+        <div class="voting">
+          <%= link_to "⬆", review_upvotes_path(review), method: :post, :class => "button tiny" %>
+          <%= link_to "⬇", review_downvotes_path(review), method: :post, :class => "button tiny" %>
+          <%= review.sum_of_votes %>
+        </div>
 
-      <div class="voting">
-        <%= link_to "⬆", review_upvotes_path(review), method: :post, :class => "button tiny" %>
-        <%= link_to "⬇", review_downvotes_path(review), method: :post, :class => "button tiny" %>
-        <%= review.sum_of_votes %>
+        <p><%= review.body %></p>
+        <p class = "post_by">Posted by: <%= review.user.email %> at <%= review.created_at %></p>
+
+        <% if review.owner_or_admin?(current_user) %>
+          <%= link_to "Edit", edit_review_path(review), :class => "button small" %>
+          <%= link_to "Delete", review, method: :delete, :class => "button small", data: {confirm: "Are you sure?"} %>
+        <% end %>
+
+        <%= link_to "Comment on Review", new_review_comment_path(review), :class => "button small" %>
+
+        <% review.comments.each_with_index do |comment, i| %>
+          <p class = "panel"> Comment <%= i + 1 %>: <%= comment.body %> </p>
+        <% end %>
       </div>
-
-      <p><%= review.body %> Rating: <%= review.rating %></p>
-      <p class = "post_by">Posted by: <%= review.user.email %> at <%= review.created_at %></p>
-
-      <% if review.owner_or_admin?(current_user) %>
-        <%= link_to "Edit", edit_review_path(review), :class => "button small" %>
-        <%= link_to "Delete", review, method: :delete, :class => "button small", data: {confirm: "Are you sure?"} %>
-      <% end %>
-
-      <%= link_to "Comment on Review", new_review_comment_path(review), :class => "button small" %>
-
-      <% review.comments.each_with_index do |comment, i| %>
-        <p class = "panel"> Comment <%= i + 1 %>: <%= comment.body %> </p>
-      <% end %>
-    </div>
-  <% end %>
-  <%= paginate @reviews %>
+    <% end %>
+    <%= paginate @reviews %>
+  </div>
 </div>
