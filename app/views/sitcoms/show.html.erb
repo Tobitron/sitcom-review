@@ -1,60 +1,54 @@
 <div class="row">
   <div class="medium-4 columns">
-    <h2><%= @sitcom.name %></h2>
-
-      <p><%= image_tag @sitcom.image_url %></p>
-
-      <table>
-        <tbody>
-          <tr>
-            <td><strong>Description:</strong></td>
-            <td><%= @sitcom.description %></td>
-          </tr>
-          <tr>
-            <td><strong>Start Year:</strong></td>
-            <td><%= @sitcom.start_year %></td>
-          </tr>
-          <tr>
-            <td><strong>End Year:</strong></td>
-            <td><%= @sitcom.end_year %></td>
-          </tr>
-          <tr>
-            <td><strong>Genre:</strong></td>
-            <td><%= @sitcom.genre %></td>
-          </tr>
-          <tr>
-            <td><strong>Network(s):</strong></td>
-            <td><%= @sitcom.network %></td>
-          </tr>
-          <tr>
-            <td><strong>Average Rating:</strong></td>
-            <td><span class="avg_rating" data-score= <%= @avg_rating %>></span></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <% if @sitcom.owner_or_admin?(current_user) %>
-        <%= link_to "Delete", @sitcom, method: :delete, :class => "button radius", data: {confirm: "Are you sure?"} %>
-        <%= link_to "Edit", edit_sitcom_path, :class => "button radius" %>
-      <% end %>
-
-      <%= link_to "Write Review", new_sitcom_review_path(@sitcom), :class => "button radius" %>
+    <hr>
+      <img><%= image_tag @sitcom.image_url %></img>
+        <hr>
+          <em><%= "#{@reviews.length} reviews" %></em>
+            <table>
+              <tbody>
+                <tr>
+                  <td><strong>Start Year:</strong></td>
+                  <td><%= @sitcom.start_year %></td>
+                </tr>
+                <tr>
+                  <td><strong>End Year:</strong></td>
+                  <td><%= @sitcom.end_year %></td>
+                </tr>
+                <tr>
+                  <td><strong>Genre:</strong></td>
+                  <td><%= @sitcom.genre %></td>
+                </tr>
+                <tr>
+                  <td><strong>Network(s):</strong></td>
+                  <td><%= @sitcom.network %></td>
+                </tr>
+                <tr>
+                  <td><strong>Average Rating:</strong></td>
+                  <td><span class="avg_rating" data-score= <%= @avg_rating %>></span></td>
+                </tr>
+              </tbody>
+          </table>
+          <% if @sitcom.owner_or_admin?(current_user) %>
+            <%= link_to "Delete", @sitcom, method: :delete, :class => "button radius", data: {confirm: "Are you sure?"} %>
+            <%= link_to "Edit", edit_sitcom_path, :class => "button radius" %>
+          <% end %>
+          <%= link_to "Write Review", new_sitcom_review_path(@sitcom), :class => "button radius" %>
   </div>
-
   <div class="medium-7 offset-1 columns">
-    <h3> Reviews </h3>
+    <h2><%= @sitcom.name %></h2>
+      <hr>
+    <h5 class="subheader"> Description </h5>
+      <p><%= @sitcom.description %></p>
+    <h4> Reviews </h4>
     <% @reviews.each do |review| %>
-      <div class="review panel">
+      <div class="panel">
         <div class="review_rating" data-score= <%= review.rating %>></div>
-
         <div class="voting">
           <%= link_to "⬆", review_upvotes_path(review), method: :post, :class => "button tiny" %>
           <%= link_to "⬇", review_downvotes_path(review), method: :post, :class => "button tiny" %>
           <%= review.sum_of_votes %>
         </div>
-
-        <p><%= review.body %></p>
-        <p class = "post_by">Posted by: <%= review.user.email %> at <%= review.created_at %></p>
+        <p class="review_body"><%= review.body %></p><p>Posted by: <%= review.user.email %></p>
 
         <% if review.owner_or_admin?(current_user) %>
           <%= link_to "Edit", edit_review_path(review), :class => "button small" %>

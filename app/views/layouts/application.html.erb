@@ -7,10 +7,23 @@
 </head>
 <body>
 
-  <nav class="top-bar">
+  <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
       <li class="name">
         <h1><a href="/">Sitcoms</a></h1>
+      </li>
+    </ul>
+
+    <ul class="right">
+      <li class="has-form">
+        <div class="row collapse">
+          <div class="large-8 small-9 columns">
+            <input type="text" placeholder="Find a Sitcom">
+          </div>
+          <div class="large-4 small-3 columns">
+            <a href="#" class="success button expand">Search</a>
+          </div>
+        </div>
       </li>
     </ul>
 
@@ -25,6 +38,7 @@
       </ul>
     </section>
   </nav>
+
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %> flash-messages">
