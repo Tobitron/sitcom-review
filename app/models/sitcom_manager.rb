@@ -17,11 +17,11 @@ class SitcomManager
   def highest_rated
     if search_params.nil?
       highest_rated = Sitcom.all.sort_by do |sitcom|
-        sitcom.reviews.average(:rating).round(2).to_f
+        sitcom.reviews.average(:rating).round(2).to_f unless sitcom.reviews.average(:rating).nil?
       end
     else
       highest_rated = Sitcom.search(search_params).sort_by do |sitcom|
-        sitcom.reviews.average(:rating).round(2).to_f
+        sitcom.reviews.average(:rating).round(2).to_f unless sitcom.reviews.average(:rating).nil?
       end
     end
     Kaminari.paginate_array(highest_rated.reverse).page page_params
