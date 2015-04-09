@@ -28,3 +28,18 @@
 .downvote {
   color: red;
 }
+
+#foto, #foto img {
+    background: #1ABC9C;
+    border-radius:50%;
+}
+#foto {
+    border-radius: 50%;
+    border: 15px solid #34495E;
+    height: 300px;
+    width: 300px;
+}
+#foto:hover img {
+    cursor: pointer;
+    opacity: 0.5;
+}
