@@ -22,6 +22,7 @@
 
 .button {
   background-color: #e29714;
+  font-family: 'Karla', sans-serif;
 }
 
 .info-bar {
@@ -35,11 +36,15 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  font-weight: bold;
   padding-top: 10px;
+
+}
+
+.site-summary p {
   font-size: 1.5em;
   font-weight: bold;
   font-family: 'Karla', sans-serif;
+  margin: 0.01em;
 }
 
 .list-container {
@@ -58,7 +63,6 @@
 }
 
 .list-item {
-
   font-family: 'Raleway', sans-serif;
 }
 

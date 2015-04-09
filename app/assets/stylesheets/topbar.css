@@ -1,6 +1,6 @@
 div.search.left {
   display: inline-block;
-  width: 20%;
+  width: 30%;
   height: 45px;
 }
 
@@ -10,7 +10,8 @@ input#searchBar {
 }
 
 input#searchButton {
-  margin-left: 1%;
+  margin-left: 0.5em;
   position: relative;
-  transform: translateY(-24%);
+  /* transform: translateY(-24%); */
+  font-family: 'Karla', sans-serif;
 }
