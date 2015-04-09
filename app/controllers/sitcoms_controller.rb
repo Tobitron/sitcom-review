@@ -3,7 +3,8 @@ class SitcomsController < ApplicationController
   before_action :fetch_sitcom, only: [:show, :edit, :destroy, :update]
 
   def index
-    unless params[:search].nil?
+    @sitcom_manager = SitcomManager.new(params[:search], params[:page])
+    unless params[:search] == nil
       @sitcoms = Sitcom.search(params[:search]).page params[:page]
     else
       @sitcoms = Sitcom.order(start_year: :desc).page params[:page]
