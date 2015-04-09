@@ -17,7 +17,12 @@
  */
 
 body {
-  background-color: #eaeaea;
+  background-color: white;
+}
+
+.name {
+  padding-top: 7px;
+  padding-right: 10px;
 }
 
 .review_body {
@@ -40,11 +45,4 @@ body {
 
 .downvote {
   color: #E30922;
-}
-
-.main-container {
-  background-color: white;
-  border: 2px solid #6f6c63;
-  margin-top: 3em;
-  margin-bottom: 3em;
 }
