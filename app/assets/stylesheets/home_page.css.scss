@@ -1,0 +1,64 @@
+.logo {
+  position: absolute;
+  bottom: 65%;
+  left: 20%;
+}
+
+.inner-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.carousel {
+  padding-top: 125px;
+  position: relative;
+}
+
+.add-sitcom {
+  position: absolute;
+  bottom: 5%;
+  left: 35%;
+}
+
+.button {
+  background-color: #e29714;
+}
+
+.info-bar {
+  max-width: 100%;
+  background-color: lightgray;
+  margin-top: .3em;
+  margin-bottom: .3em;
+  height: 5em;
+}
+
+.site-summary {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 10px;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.list-container {
+  background-color: gray;
+  padding-left: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+@media only screen and (min-width: 40.063em) {
+  .newest {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+  }
+}
+
+@media only screen and (max-width: 40.063em) {
+  .newest {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+  }
+}

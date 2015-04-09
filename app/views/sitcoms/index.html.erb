@@ -1,11 +1,55 @@
 <div class="row">
-  <div class="large-12">
-    <h1>Sitcoms</h1>
-    <ul>
-      <% @sitcoms.each do |sitcom| %>
-        <li><%= link_to sitcom.name, sitcom_path(sitcom) %></li>
-      <% end %>
-    </ul>
+  <div class="small-12 small-centered column inner-container">
+    <div class="carousel">
+      <%= image_tag "buster_scream.png" %>
+      <div class="row logo">
+        <div class="small-12 centered column">
+          <%= image_tag "sitcom_logo.png" %>
+        </div>
+      </div>
+      <%= link_to "Add New Sitcom", new_sitcom_path, :class => "add-sitcom button" %>
+    </div>
 
-    <%= link_to "Add New Sitcom", new_sitcom_path, :class => "button" %>
-    <%= paginate @sitcoms %>
+    <div class="row">
+      <div class="small-12 info-bar columns">
+        <div class="site-summary">
+          This is a website about shows. All funny shows, be they sitcoms, be they cartoons, whatever!
+          Tell us what you like, tell us what you hate.
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-12 columns list-container">
+        <div class="medium-4 small-12 columns top-10">
+          <u>Top 10</u>
+          <ol>
+            <li>Arrested Development</li>
+            <li>Archer</li>
+            <li>Seinfeld</li>
+          </ol>
+        </div>
+        <div class="medium-4 small-12 columns newest">
+          <u>Newest</u>
+          <ul>
+            <li>Broad City</li>
+            <li>Another new sitcom</li>
+            <li>Needs a third for border to look ok</li>
+          </ul>
+        </div>
+        <div class="medium-4 small-12 columns most-reviewed">
+          <u>Most reviewed</u>
+          <ul>
+            <% @sitcoms.each do |sitcom| %>
+              <li><%= link_to sitcom.name, sitcom_path(sitcom) %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<%= paginate @sitcoms %>

@@ -16,15 +16,35 @@
 
  */
 
+body {
+  background-color: #eaeaea;
+}
+
 .review_body {
   max-width: 500px;
   word-wrap: break-word;
 }
 
+.top-bar {
+  background-color: #F7C12C;
+}
+
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+  background: #E29714;
+}
+
 .upvote {
-  color: red;
+  color: #E30922;
 }
 
 .downvote {
-  color: red;
+  color: #E30922;
+}
+
+.main-container {
+  background-color: white;
+  border: 2px solid #6f6c63;
+  margin-top: 3em;
+  margin-bottom: 3em;
 }
