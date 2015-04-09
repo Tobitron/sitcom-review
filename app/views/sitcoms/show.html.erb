@@ -44,10 +44,18 @@
       <div class="panel review">
         <div class="review_rating" data-score= <%= review.rating %>></div>
         <div class="voting">
-          <%= link_to "⬆", review_upvotes_path(review), method: :post, :class => "button tiny" %>
-          <%= link_to "⬇", review_downvotes_path(review), method: :post, :class => "button tiny" %>
-          <%= review.sum_of_votes %>
-        </div>
+        <% if review.user_upvoted?(current_user) %>
+          <%= link_to "⬆", review_upvotes_path(review), method: :post, :class => "upvote" %>
+        <% else %>
+          <%= link_to "⬆", review_upvotes_path(review), method: :post %>
+        <% end %>
+        <% if review.user_downvoted?(current_user) %>
+          <%= link_to "⬇", review_downvotes_path(review), method: :post, :class => "downvote" %>
+        <% else %>
+          <%= link_to "⬇", review_downvotes_path(review), method: :post %>
+        <% end %>
+      <%= review.sum_of_votes %>
+      </div>
         <p class="review_body"><%= review.body %></p><p>Posted by: <%= review.user.email %></p>
 
         <% if review.owner_or_admin?(current_user) %>
