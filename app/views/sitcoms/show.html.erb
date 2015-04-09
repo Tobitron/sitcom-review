@@ -56,7 +56,6 @@
         <% end %>
 
         <%= link_to "Comment on Review", new_review_comment_path(review), :class => "button small" %>
-
         <% review.comments.each_with_index do |comment, i| %>
           <p class = "panel"> Comment <%= i + 1 %>: <%= comment.body %> </p>
         <% end %>

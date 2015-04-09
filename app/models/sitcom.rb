@@ -35,4 +35,8 @@ class Sitcom < ActiveRecord::Base
       user == current_user || current_user.admin?
     end
   end
+
+  def self.search(query)
+    where("LOWER(name) like LOWER(?)", "%#{query}%")
+  end
 end

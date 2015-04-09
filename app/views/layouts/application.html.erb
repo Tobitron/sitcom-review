@@ -24,6 +24,13 @@
         <%- end -%>
       </ul>
     </section>
+
+    <div class="search left">
+      <form action=<%= sitcoms_path %> method="GET">
+        <input id="searchBar" type="text" name="search" value="">
+        <input id="searchButton" type="submit" value="Search!">
+      </form>
+    </div>
   </nav>
 
 

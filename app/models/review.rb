@@ -28,4 +28,22 @@ class Review < ActiveRecord::Base
     end
     sum
   end
+
+  def user_upvoted?(user)
+    if !(user.nil?)
+      vote = votes.find_by(user_id: user.id)
+      if !(vote.nil?)
+        vote.value == 1
+      end
+    end
+  end
+
+  def user_downvoted?(user)
+    if !(user.nil?)
+      vote = votes.find_by(user_id: user.id)
+      if !(vote.nil?)
+        vote.value == -1
+      end
+    end
+  end
 end
