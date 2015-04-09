@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <nav class="top-bar">
+  <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
       <li class="name">
         <h1><a href="/">Sitcoms</a></h1>
@@ -23,14 +23,14 @@
           <li><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
       </ul>
-    </section>
 
-    <div class="search left">
-      <form action=<%= sitcoms_path %> method="GET">
-        <input id="searchBar" type="text" name="search" value="">
-        <input id="searchButton" type="submit" value="Search!">
-      </form>
-    </div>
+      <div class="search left">
+        <form action=<%= sitcoms_path %> method="GET">
+          <input id="searchBar" type="text" name="search" value="">
+          <input id="searchButton" type="submit" value="Search!">
+        </form>
+      </div>
+    </section>
   </nav>
 
   <%- flash.each do |key, value| -%>

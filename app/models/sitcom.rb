@@ -37,6 +37,6 @@ class Sitcom < ActiveRecord::Base
   end
 
   def self.search(query)
-    where("LOWER(name) like LOWER(?)", "%#{query}%")
+    where("name ilike ?", "%#{query}%")
   end
 end
