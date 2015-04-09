@@ -11,48 +11,52 @@
     </div>
 
     <div class="row">
-      <div class="small-12 info-bar columns">
+      <div class="small-8 small-centered info-bar columns">
         <div class="site-summary">
-          This is a website about shows. All funny shows, be they sitcoms, be they cartoons, whatever!
-          Tell us what you like, tell us what you hate.
+          Don't get pigeon-holed by the name, this is a place where you can find and review all funny shows!
         </div>
       </div>
     </div>
-
     <div class="row">
       <div class="medium-12 columns list-container">
         <div class="medium-4 small-12 columns top-10">
           <img src="http://placehold.it/400x300&text=[img]"/>
-          <u>Top 10</u>
-          <ol>
-            <li>Arrested Development</li>
-            <li>Archer</li>
-            <li>Seinfeld</li>
-          </ol>
+          <div class="list">
+            <p class="list-header">TOP 10</p>
+            <ol class="list-item">
+              <li>Arrested Development</li>
+              <li>Archer</li>
+              <li>Seinfeld</li>
+              <li>Flight of the Conchords</li>
+            </ol>
+          </div>
         </div>
-        <div class="medium-4 small-12 columns newest">
+        <div class="medium-4 small-12 columns">
           <img src="http://placehold.it/400x300&text=[img]"/>
-          <u>Newest</u>
-          <ul>
-            <li>Broad City</li>
-            <li>Another new sitcom</li>
-            <li>Needs a third for border to look ok</li>
-          </ul>
+          <div class="list newest">
+            <p class="list-header">NEWEST</p>
+            <ol class="list-item">
+              <li>Broad City</li>
+              <li>Another new sitcom</li>
+              <li>Needs a third for border to look ok</li>
+              <li>And a fifth</li>
+            </ol>
+          </div>
         </div>
         <div class="medium-4 small-12 columns most-reviewed">
           <img src="http://placehold.it/400x300&text=[img]"/>
-          <u>Most reviewed</u>
-          <ul>
-            <% @sitcoms.each do |sitcom| %>
-              <li><%= link_to sitcom.name, sitcom_path(sitcom) %></li>
-            <% end %>
-          </ul>
+          <div class="list">
+            <p class="list-header">MOST REVIEWED</p>
+            <ol class="list-item">
+              <% @sitcoms.each do |sitcom| %>
+                <li><%= link_to sitcom.name, sitcom_path(sitcom) %></li>
+              <% end %>
+            </ol>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
 
 <%= paginate @sitcoms %>

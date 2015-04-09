@@ -33,16 +33,33 @@
 
 .site-summary {
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
   font-weight: bold;
   padding-top: 10px;
   font-size: 1.5em;
   font-weight: bold;
-  font-family: 'Bree Serif', serif;
+  font-family: 'Karla', sans-serif;
 }
 
 .list-container {
   padding-left: 0;
-  text-align: center;
+  text-align: left;
+}
+
+.list {
+  margin-top: 1.5em;
+  padding-left: 1em;
+}
+
+.list-header {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.5em;
+}
+
+.list-item {
+
+  font-family: 'Raleway', sans-serif;
 }
 
 ul {
