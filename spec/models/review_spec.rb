@@ -14,4 +14,12 @@ describe "Review" do
       end
     end
   end
+  describe "#down_voted?" do
+    context "logged in user downvotes a reivew" do
+      it "user downvoted method returns true" do
+        vote_manager.downvote
+        expect(review.user_downvoted?(user)).to eq true
+      end
+    end
+  end
 end
