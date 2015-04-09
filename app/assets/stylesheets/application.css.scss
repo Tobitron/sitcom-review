@@ -29,17 +29,20 @@
   color: red;
 }
 
-#foto, #foto img {
-    background: #1ABC9C;
-    border-radius:50%;
+#foto,
+#foto img {
+  background: #1abc9c;
+  border-radius:50%;
 }
+
 #foto {
-    border-radius: 50%;
-    border: 15px solid #34495E;
-    height: 300px;
-    width: 300px;
+  border: 15px solid #34495e;
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
 }
+
 #foto:hover img {
-    cursor: pointer;
-    opacity: 0.5;
+  cursor: pointer;
+  opacity: 0.5;
 }
