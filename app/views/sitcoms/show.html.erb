@@ -41,7 +41,7 @@
       <p><%= @sitcom.description %></p>
     <h4> Reviews </h4>
     <% @reviews.each do |review| %>
-      <div class="panel">
+      <div class="panel review">
         <div class="review_rating" data-score= <%= review.rating %>></div>
         <div class="voting">
           <%= link_to "⬆", review_upvotes_path(review), method: :post, :class => "button tiny" %>
