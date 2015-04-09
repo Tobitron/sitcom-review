@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <nav class="top-bar" data-topbar role="navigation">
+<nav class="top-bar">
     <ul class="title-area">
       <li class="name">
         <h1><a href="/">Sitcoms</a></h1>
@@ -23,7 +23,18 @@
           <li><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
       </ul>
-    </section>
+
+      <ul class="right">
+       <li class="has-dropdown">
+        <a href="#">Sort By</a>
+        <ul class="dropdown">
+          <li class="active"><a href=<%= sitcoms_path %>>Start Year</a></li>
+          <li class="active"><a href="">A to Z</a></li>
+          <li class="active"><a href="">Z to A</a></li>
+          <li class="active"><a href="">Rating</a></li>
+        </ul>
+      </li>
+    </ul>
 
     <div class="search left">
       <form action=<%= sitcoms_path %> method="GET">
@@ -31,7 +42,8 @@
         <input id="searchButton" type="submit" value="Search!">
       </form>
     </div>
-  </nav>
+  </section>
+</nav>
 
 
   <%- flash.each do |key, value| -%>
@@ -43,6 +55,7 @@
   <%= yield %>
 
   <%= javascript_include_tag 'application' %>
+  <%= render 'layouts/footer' %>
   <%= yield :extra_footer %>
 </body>
 </html>

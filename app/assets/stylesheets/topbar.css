@@ -1,0 +1,16 @@
+div.search.left {
+  display: inline-block;
+  width: 20%;
+  height: 45px;
+}
+
+input#searchBar {
+  float: left;
+  width: 60%;
+}
+
+input#searchButton {
+  margin-left: 1%;
+  position: relative;
+  transform: translateY(-24%);
+}
