@@ -19,7 +19,6 @@ class SitcomsController < ApplicationController
       @newest_sitcoms = sitcom_manager_without_search.newest_sitcoms
       @highest_rated = sitcom_manager_without_search.highest_rated
       @most_reviewed = sitcom_manager_without_search.most_reviewed
-      binding.pry
     end
   end
 

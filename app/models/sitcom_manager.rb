@@ -1,7 +1,7 @@
 class SitcomManager
   attr_reader :search_params, :page_params
 
-  def initialize(search_params, page)
+  def initialize(search_params, page_params)
     @search_params = search_params
     @page_params = page_params
   end
