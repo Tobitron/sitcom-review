@@ -3,7 +3,7 @@ class SitcomsController < ApplicationController
   before_action :fetch_sitcom, only: [:show, :edit, :destroy, :update]
 
   def index
-    unless params[:search] == nil
+    unless params[:search].nil?
       @sitcoms = Sitcom.search(params[:search]).page params[:page]
     else
       @sitcoms = Sitcom.order(start_year: :desc).page params[:page]
@@ -29,9 +29,6 @@ class SitcomsController < ApplicationController
     @reviews = Kaminari.paginate_array(@sitcom.reviews.sort_by { |review| review.sum_of_votes }.reverse).page params[:page]
     @avg_rating = 0
     @avg_rating = @sitcom.reviews.average(:rating).round(2) unless @sitcom.reviews.blank?
-  end
-
-  def edit
   end
 
   def update
