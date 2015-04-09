@@ -36,4 +36,6 @@ gem 'foundation_rails_helper'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'fog'
+gem 'mini_magick'
 gem 'draper', '~> 2.1.0'
+

@@ -32,9 +32,6 @@ class SitcomsController < ApplicationController
     @avg_rating = @sitcom.reviews.average(:rating).round(2) unless @sitcom.reviews.blank?
   end
 
-  def edit
-  end
-
   def update
     if @sitcom.update(sitcom_params)
       flash[:notice] = 'Sitcom Updated'

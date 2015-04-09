@@ -31,6 +31,6 @@ FactoryGirl.define do
 
     factory :downvote do
       value -1
-    end 
+    end
   end
 end
