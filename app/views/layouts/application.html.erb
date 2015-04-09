@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <nav class="top-bar">
+  <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
       <li class="name">
         <h1><a href="/">Sitcoms</a></h1>
@@ -32,6 +32,7 @@
       </form>
     </div>
   </nav>
+
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %> flash-messages">
