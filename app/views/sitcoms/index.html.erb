@@ -17,6 +17,7 @@
         </div>
       </div>
     </div>
+
     <div class="row">
       <div class="medium-12 columns list-container">
         <div class="medium-4 small-12 columns top-10">
@@ -75,7 +76,43 @@
         </div>
       </div>
     </div>
+
+    <div class="row work">
+      <hr>
+      <div class="large-12 columns">
+        <h4>Meet the Team!</h4>
+        <p>Click on an image and connect to us on LinkedIn</p>
+        <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
+          <li>
+            <div id="foto">
+              <%= link_to('https://www.linkedin.com/in/katebuckner') do %>
+                <%= image_tag('kate-pic.jpg', alt: 'Kate Buckner') %>
+              <% end %>
+            </div>
+          </li>
+          <li>
+            <div id="foto">
+              <%= link_to('https://www.linkedin.com/in/tobiaskahn') do %>
+                <%= image_tag('toby-pic.jpg', alt: 'Tobias Kahn') %>
+              <% end %>
+            </div>
+          </li>
+          <li>
+            <div id="foto">
+              <%= link_to('https://www.linkedin.com/in/roccobasso') do %>
+                <%= image_tag('rocco-pic.png', alt: 'Rocco Basso') %>
+              <% end %>
+            </div>
+          </li>
+          <li>
+            <div id="foto">
+              <%= link_to('https://www.linkedin.com/in/kylelreeves') do %>
+                <%= image_tag('kyle-pic.jpg', alt: 'Kyle Reeves') %>
+              <% end %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
-
-<%= paginate @sitcoms %>

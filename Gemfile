@@ -38,4 +38,3 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem 'draper', '~> 2.1.0'
-

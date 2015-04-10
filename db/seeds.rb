@@ -6,22 +6,22 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-50.times do |n|
-  User.create!(email: "email#{n}@gmail.com", password: "password")
-end
+User.create!(email: "sitcoms_admin@example.com", password: "launchacademy", password_confirmation: "launchacademy",  role: "admin")
+User.create!(email: "kyle@example.com", password: "launchacademy", password_confirmation: "launchacademy", role: "admin")
+User.create!(email: "kate@example.com", password: "launchacademy", password_confirmation: "launchacademy", role: "admin")
+User.create!(email: "tobias@example.com", password: "launchacademy", password_confirmation: "launchacademy", role: "admin")
+User.create!(email: "rocco@example.com", password: "launchacademy", password_confirmation: "launchacademy", role: "admin")
 
-50.times do |n|
-  Sitcom.create!(user_id: 1, name: "Always Sunny#{n}",
-  description: "this is a description", start_year: 2003)
-end
+Sitcom.create!(user_id: 1,
+               name: "Modern Family",
+               description: "Three different, but related families face trials and tribulations in their own uniquely comedic ways.",
+               start_year: 2009,
+               network: "ABC",
+               genre: "Sitcom")
 
-50.times do |n|
-  Review.create!(user_id: (n + 1), sitcom_id: 1,
-  body: "The path of the righteous man is beset on all sides by the iniquities
-   of the selfish and the tyranny of evil men. Blessed is he who, in the name
-   of charity and good will, shepherds the weak through the valley of darkness,
-   for he is truly his brother's keeper and the finder of lost children.
-   And I will strike down upon thee with great vengeance and furious anger those
-   who attempt to poison and destroy my brothers. And you will know my name is
-   the Lord when I lay my vengeance upon thee.", rating: 4)
-end
+Sitcom.create!(user_id: 1,
+               name: "New Girl",
+               description: "A newly single woman moves into an apartment with 3 men.",
+               start_year: 2011,
+               network: "Fox",
+               genre: "Sitcom")

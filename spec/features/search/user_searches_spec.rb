@@ -3,9 +3,9 @@ require 'rails_helper'
 feature 'any visitor searches' do
 
   scenario 'visitor searches from anywhere on site' do
-    sitcom1 = FactoryGirl.create(:sitcom)
-    sitcom2 = FactoryGirl.create(:sitcom)
-    scrubs = FactoryGirl.create(:sitcom, name: "Scrubs")
+    FactoryGirl.create(:sitcom)
+    FactoryGirl.create(:sitcom)
+    FactoryGirl.create(:sitcom, name: "Scrubs")
 
     visit sitcoms_path
 

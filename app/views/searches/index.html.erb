@@ -1,0 +1,6 @@
+<h2>Your Search Results</h2>
+<ul>
+  <% @sitcoms.each do |sitcom| %>
+    <li><%= link_to sitcom.name, sitcom_path(sitcom) %></li>
+  <% end %>
+</ul>
