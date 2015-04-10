@@ -8,25 +8,25 @@
 <body>
 
 <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">Sitcoms</a></h1>
-      </li>
+  <ul class="title-area">
+    <li class="name">
+     <h1><%= link_to "Sitcoms", root_path %></h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <%- if current_user -%>
+        <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+      <%- else -%>
+        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <li><%= link_to 'Sign In', new_user_session_path %></li>
+      <%- end -%>
     </ul>
 
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-
-      <ul class="right">
-       <li class="has-dropdown">
-        <a href="#">Sort By</a>
+    <ul class="right">
+      <li class="has-dropdown">
+        <%= link_to "Sort By", "#" %>
         <ul class="dropdown">
           <li class="active"><a href=<%= sitcoms_path %>>Start Year</a></li>
           <li class="active"><a href="">A to Z</a></li>
@@ -35,7 +35,6 @@
         </ul>
       </li>
     </ul>
-
 
     <div class="search left">
       <form action=<%= sitcoms_path %> method="GET">
@@ -46,12 +45,11 @@
   </section>
 </nav>
 
-
-  <%- flash.each do |key, value| -%>
+  <% flash.each do |key, value| %>
     <div class="flash flash-<%= key %> flash-messages">
       <%= value %>
     </div>
-  <%- end -%>
+  <% end %>
 
   <%= yield %>
 
