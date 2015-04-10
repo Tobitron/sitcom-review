@@ -3,16 +3,18 @@
 <head>
   <title>Sitcoms</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Fugaz+One|Montserrat:700,400|Oxygen:700,400|Karla:400,700|Comfortaa:400,700|Righteous' %>
+  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Ropa+Sans|Oswald|Raleway:500,600,700,800,900,400' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<nav class="top-bar">
-  <ul class="title-area">
-    <li class="name">
-     <h1><%= link_to "Sitcoms", root_path %></h1>
-    </li>
-  </ul>
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <%= link_to image_tag("sitcom_logo_small.png"), root_path %>
+      </li>
+    </ul>
 
   <section class="top-bar-section">
     <ul class="right">
@@ -23,35 +25,22 @@
         <li><%= link_to 'Sign In', new_user_session_path %></li>
       <%- end -%>
     </ul>
+      <div class="search left">
+        <form action="<%= sitcoms_path %>" method="GET">
+          <input id="searchBar" type="text" name="search" value="">
+          <input id="searchButton" type="submit" value="Search" class="button">
+        </form>
+      </div>
+    </section>
+  </nav>
 
-    <ul class="right">
-      <li class="has-dropdown">
-        <%= link_to "Sort By", "#" %>
-        <ul class="dropdown">
-          <li class="active"><a href=<%= sitcoms_path %>>Start Year</a></li>
-          <li class="active"><a href="">A to Z</a></li>
-          <li class="active"><a href="">Z to A</a></li>
-          <li class="active"><a href="">Rating</a></li>
-        </ul>
-      </li>
-    </ul>
-
-    <div class="search left">
-      <form action=<%= searches_path %> method="GET">
-        <input id="searchBar" type="text" name="search" value="">
-        <input id="searchButton" type="submit" value="Search!">
-      </form>
-    </div>
-  </section>
-</nav>
-
-  <% flash.each do |key, value| %>
+  <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %> flash-messages">
       <%= value %>
     </div>
   <% end %>
 
-  <%= yield %>
+    <%= yield %>
 
   <%= javascript_include_tag 'application' %>
   <%= render 'layouts/footer' %>

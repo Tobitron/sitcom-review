@@ -8,10 +8,11 @@ class SitcomManager
 
   def newest_sitcoms
     if user_searched?
-      order_search_by_start_year
+      newest_sitcoms = order_search_by_start_year
     else
-      order_by_start_year
+      newest_sitcoms = order_by_start_year
     end
+    newest_sitcoms.limit(10)
   end
 
   def highest_rated
@@ -20,7 +21,7 @@ class SitcomManager
     else
       highest_rated = order_by_highest_rated
     end
-    Kaminari.paginate_array(highest_rated.reverse).page page_params
+    Kaminari.paginate_array(highest_rated.reverse.take(10)).page page_params
   end
 
   def most_reviewed
@@ -29,7 +30,7 @@ class SitcomManager
     else
       most_reviewed = order_by_most_reviewed
     end
-    Kaminari.paginate_array(most_reviewed.reverse).page page_params
+    Kaminari.paginate_array(most_reviewed.reverse.take(10)).page page_params
   end
 
   private
@@ -47,13 +48,21 @@ class SitcomManager
 
   def order_search_by_highest_rated
     Sitcom.search(search_params).sort_by do |sitcom|
-      sitcom.reviews.average(:rating).round(2).to_f unless sitcom.reviews.average(:rating).nil?
+      unless sitcom.reviews.average(:rating).nil?
+        sitcom.reviews.average(:rating).round(2).to_f
+      else
+        0
+      end
     end
   end
 
   def order_by_highest_rated
     Sitcom.all.sort_by do |sitcom|
-      sitcom.reviews.average(:rating).round(2).to_f unless sitcom.reviews.average(:rating).nil?
+      unless sitcom.reviews.average(:rating).nil?
+        sitcom.reviews.average(:rating).round(2).to_f
+      else
+        0
+      end
     end
   end
 

@@ -16,17 +16,47 @@
 
  */
 
+body {
+  background-color: white;
+}
+
+.name {
+  padding-top: 7px;
+  padding-right: 10px;
+}
+
 .review_body {
   max-width: 500px;
   word-wrap: break-word;
 }
 
+.top-bar {
+  background-color: #7EBAC2;
+}
+
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+  background: #E29714;
+}
+
 .upvote {
-  color: red;
+  color: #E30922;
 }
 
 .downvote {
-  color: red;
+  color: #E30922;
+}
+
+.formheader {
+  text-align: center
+}
+
+.new_sitcom {
+  width:985px; margin:0 auto
+}
+
+.edit_sitcom {
+  width:985px; margin:0 auto
 }
 
 #foto,

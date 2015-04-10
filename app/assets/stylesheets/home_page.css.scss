@@ -1,0 +1,88 @@
+.logo {
+  position: absolute;
+  bottom: 60%;
+  left: 20%;
+}
+
+.inner-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.carousel {
+  padding-top: 150px;
+  position: relative;
+}
+
+.add-sitcom {
+  position: absolute;
+  bottom: 5%;
+  left: 35%;
+}
+
+.button {
+  background-color: #e29714;
+  font-family: 'Karla', sans-serif;
+}
+
+.info-bar {
+  margin-bottom: 4em;
+  height: 5em;
+}
+
+.site-summary {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5px;
+
+}
+
+.site-summary {
+  font-size: 2.5em;
+  font-weight: bold;
+  font-family: 'Karla', sans-serif;
+  margin: 0.01em;
+}
+
+.list-container {
+  padding-left: 0;
+  text-align: left;
+}
+
+.list {
+  margin-top: 1.5em;
+  padding-left: 1em;
+}
+
+.list-header {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.5em;
+}
+
+.list-item {
+  font-family: 'Raleway', sans-serif;
+}
+
+.list-image {
+  height: 215px;
+  width: 300px; 
+}
+
+ul {
+  list-style-type: none;
+}
+
+@media only screen and (min-width: 40.063em) {
+  .newest {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+  }
+}
+
+@media only screen and (max-width: 40.063em) {
+  .newest {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+  }
+}
