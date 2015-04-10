@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     resources :upvotes, only: [:create]
     resources :downvotes, only: [:create]
   end
+
+  resources :searches, only: [:index]
 end
