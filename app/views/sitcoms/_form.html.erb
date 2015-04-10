@@ -1,5 +1,4 @@
-<form>
-  <%= form_for @sitcom, html: { multipart: true } do |f| %>
+<%= form_for @sitcom, html: { multipart: true } do |f| %>
   <div class= "row">
     <div class="large-12 columns">
       <%= f.text_field :name %>
@@ -36,5 +35,4 @@
       <%= f.submit %>
     </div>
   </div>
-  <% end %>
-</form>
+<% end %>
