@@ -10,7 +10,7 @@ feature 'any visitor searches' do
     visit sitcoms_path
 
     fill_in 'search', with: "futur"
-    click_on 'Search!'
+    click_on 'Search'
 
     expect(page).to have_content('Futurama')
     expect(page).to_not have_content('Scrubs')

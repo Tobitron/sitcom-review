@@ -1,11 +1,81 @@
 <div class="row">
-  <div class="large-12">
-    <h1>Sitcoms</h1>
-    <ul>
-      <% @sitcoms.each do |sitcom| %>
-        <li><%= link_to sitcom.name, sitcom_path(sitcom) %></li>
-      <% end %>
-    </ul>
+  <div class="small-12 small-centered column inner-container">
+    <div class="carousel">
+      <%= image_tag "buster_scream_faded.png" %>
+      <div class="row logo">
+        <div class="small-12 centered column">
+          <%= image_tag "sitcom_logo.png" %>
+        </div>
+      </div>
+      <%= link_to "Add New Sitcom", new_sitcom_path, :class => "add-sitcom button" %>
+    </div>
 
-    <%= link_to "Add New Sitcom", new_sitcom_path, :class => "button" %>
-    <%= paginate @sitcoms %>
+    <div class="row">
+      <div class="small-8 small-centered info-bar columns">
+        <div class="site-summary">
+      Help us find and review the world's funniest TV shows!
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-12 columns list-container">
+        <div class="medium-4 small-12 columns top-10">
+          <% images = [] %>
+          <% @sitcom_manager.highest_rated.each do |sitcom| %>
+            <% images << sitcom.image unless sitcom.image.path.nil? %>
+          <% end %>
+          <% if images.empty? %>
+            <% images << "anyang.png" %>
+          <% end %>
+          <%= image_tag images[rand(0..images.length - 1)], class: "list-image" %>
+          <div class="list">
+            <p class="list-header">TOP 10</p>
+            <ol class="list-item">
+              <% @sitcom_manager.highest_rated.each do |sitcom| %>
+                <li><%= link_to sitcom.name, sitcom_path(sitcom) %></li>
+              <% end %>
+            </ol>
+          </div>
+        </div>
+        <div class="medium-4 small-12 columns">
+          <% images = [] %>
+          <% @sitcom_manager.newest_sitcoms.each do |sitcom| %>
+            <% images << sitcom.image unless sitcom.image.path.nil? %>
+          <% end %>
+          <% if images.empty? %>
+            <% images << "anyang.png" %>
+          <% end %>
+          <%= image_tag images[rand(0..images.length - 1)], class: "list-image" %>
+          <div class="list newest">
+            <p class="list-header">NEWEST</p>
+            <ol class="list-item">
+              <% @sitcom_manager.newest_sitcoms.each do |sitcom| %>
+                <li><%= link_to sitcom.name, sitcom_path(sitcom) %></li>
+              <% end %>
+            </ol>
+          </div>
+        </div>
+        <div class="medium-4 small-12 columns most-reviewed">
+          <% images = [] %>
+          <% @sitcom_manager.most_reviewed.each do |sitcom| %>
+            <% images << sitcom.image unless sitcom.image.path.nil? %>
+          <% end %>
+          <% if images.empty? %>
+            <% images << "anyang.png" %>
+          <% end %>
+          <%= image_tag images[rand(0..images.length - 1)], class: "list-image" %>
+          <div class="list">
+            <p class="list-header">MOST REVIEWED</p>
+            <ol class="list-item">
+              <% @sitcom_manager.most_reviewed.each do |sitcom| %>
+                <li><%= link_to sitcom.name, sitcom_path(sitcom) %></li>
+              <% end %>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= paginate @sitcoms %>
