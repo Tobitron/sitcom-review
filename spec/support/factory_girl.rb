@@ -21,6 +21,12 @@ FactoryGirl.define do
     sitcom
   end
 
+  factory :comment do
+    body "I agree wholeheartedly with this whole review!"
+    user
+    review
+  end
+
   factory :vote do
     user
     review
@@ -30,7 +36,7 @@ FactoryGirl.define do
     end
 
     factory :downvote do
-      value -1
+      value (-1)
     end
   end
 end
