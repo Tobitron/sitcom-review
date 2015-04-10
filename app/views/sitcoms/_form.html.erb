@@ -1,16 +1,40 @@
-<%= form_for @sitcom, html: { multipart: true } do |f| %>
-  <% if @sitcom.errors.present? %>
-    <% @sitcom.errors.full_messages.each do |error| %>
-      <%= error %>
-    <% end %>
+<form>
+  <%= form_for @sitcom, html: { multipart: true } do |f| %>
+  <div class= "row">
+    <div class="large-12 columns">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.select :start_year, (1900..Time.now.year).to_a.reverse %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.select :end_year, (1900..Time.now.year).to_a.reverse, include_blank: true%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.text_field :genre %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.text_field :network %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-10-centered columns">
+      <%= f.file_field :image %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.text_area :description %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12-centered columns">
+      <%= f.submit %>
+    </div>
+  </div>
   <% end %>
-
-  <%= f.text_field :name %>
-  <%= f.text_area :description %>
-  <%= f.select :start_year, (1900..Time.now.year).to_a.reverse %>
-  <%= f.select :end_year, (1900..Time.now.year).to_a.reverse, include_blank: true%>
-  <%= f.text_field :genre %>
-  <%= f.file_field :image %>
-  <%= f.text_field :network %>
-  <%= f.submit %>
-<% end %>
+</form>

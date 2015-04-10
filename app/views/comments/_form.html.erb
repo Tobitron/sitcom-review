@@ -1,4 +1,14 @@
-<%= form_for [@review, @comment] do |f| %>
-  <%= f.text_field :body %>
-  <%= f.submit %>
-<% end %>
+<form>
+  <%= form_for [@review, @comment] do |f| %>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.text_field :body %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.submit %>
+    </div>
+  </div>
+  <% end %>
+</form>
