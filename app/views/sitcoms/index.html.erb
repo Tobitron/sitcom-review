@@ -17,16 +17,32 @@
         <p>Click on an image and connect to us on LinkedIn</p>
         <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
           <li>
-            <div id="foto"><a href="http://www.linkedin.com/in/katebuckner"><img src="/assets/kate-pic.jpg" alt="Kate Buckner"></a></div>
+            <div id="foto">
+              <%= link_to('https://www.linkedin.com/in/katebuckner') do %>
+                <%= image_tag('/assets/kate-pic.jpg', alt: 'Kate Buckner') %>
+              <% end %>
+            </div>
           </li>
           <li>
-            <div id="foto"><a href="https://www.linkedin.com/in/tobiaskahn"><img src="/assets/toby-pic.jpg" alt="Tobias Kahn"></a></div>
+            <div id="foto">
+              <%= link_to('https://www.linkedin.com/in/tobiaskahn') do %>
+                <%= image_tag('/assets/toby-pic.jpg', alt: 'Tobias Kahn') %>
+              <% end %>
+            </div>
           </li>
           <li>
-            <div id="foto"><a href="http://www.linkedin.com/in/roccobasso"><img src="/assets/rocco-pic.png" alt="Rocco Bosoo"></a></div>
+            <div id="foto">
+              <%= link_to('https://www.linkedin.com/in/roccobasso') do %>
+                <%= image_tag('/assets/rocco-pic.png', alt: 'Rocco Basso') %>
+              <% end %>
+            </div>
           </li>
           <li>
-            <div id="foto"><a href="https://www.linkedin.com/in/kylelreeves"><img src="/assets/kyle-pic.jpg" alt="Kyle Reeves"></a></div>
+            <div id="foto">
+              <%= link_to('https://www.linkedin.com/in/kylelreeves') do %>
+                <%= image_tag('/assets/kyle-pic.jpg', alt: 'Kyle Reeves') %>
+              <% end %>
+            </div>
           </li>
         </ul>
       </div>

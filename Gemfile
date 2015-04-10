@@ -30,10 +30,6 @@ group :test do
   gem 'poltergeist'
 end
 
-group :production do
-  gem 'rails_12factor'
-end
-
 gem 'devise'
 gem 'foundation-rails', github: 'zurb/foundation-rails'
 gem 'foundation_rails_helper'
@@ -42,4 +38,3 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem 'draper', '~> 2.1.0'
-
