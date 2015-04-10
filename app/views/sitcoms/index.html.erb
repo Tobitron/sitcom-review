@@ -24,7 +24,7 @@
           <% @sitcom_manager.highest_rated.each do |sitcom| %>
             <% images << sitcom.image unless sitcom.image.path.nil? %>
           <% end %>
-          <img src="<%= images[rand(0..images.length - 1)]%>"/>
+          <img class="list-image" src="<%= images[rand(0..images.length - 1)]%>"/>
           <div class="list">
             <p class="list-header">TOP 10</p>
             <ol class="list-item">
@@ -39,7 +39,7 @@
           <% @sitcom_manager.newest_sitcoms.each do |sitcom| %>
             <% images << sitcom.image unless sitcom.image.path.nil? %>
           <% end %>
-          <img src="<%= images[rand(0..images.length - 1)] %>"/>
+          <img class="list-image" src="<%= images[rand(0..images.length - 1)] %>"/>
           <div class="list newest">
             <p class="list-header">NEWEST</p>
             <ol class="list-item">
@@ -54,7 +54,7 @@
           <% @sitcom_manager.most_reviewed.each do |sitcom| %>
             <% images << sitcom.image unless sitcom.image.path.nil? %>
           <% end %>
-          <img src="<%= images[rand(0..images.length - 1)] %>"/>
+          <img class="list-image" src="<%= images[rand(0..images.length - 1)] %>"/>
           <div class="list">
             <p class="list-header">MOST REVIEWED</p>
             <ol class="list-item">
