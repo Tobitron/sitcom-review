@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Sitcoms</title>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Fugaz+One|Montserrat:700,400|Oxygen:700,400|Karla:400,700|Comfortaa:400,700|Righteous' %>
-  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Ropa+Sans|Oswald|Raleway:500,600,700,800,900,400' %>
-  <%= csrf_meta_tags %>
-</head>
+  <head>
+    <title>Sitcoms</title>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Fugaz+One|Montserrat:700,400|Oxygen:700,400|Karla:400,700|Comfortaa:400,700|Righteous' %>
+    <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Ropa+Sans|Oswald|Raleway:500,600,700,800,900,400' %>
+    <%= csrf_meta_tags %>
+  </head>
 <body>
 
   <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
       <li class="name">
-        <%= link_to image_tag("sitcom_logo_small.png"), root_path %>
+        <%= link_to image_tag("sitcom_logo_small_glow.png"), root_path %>
       </li>
     </ul>
 
@@ -26,7 +26,7 @@
       <%- end -%>
     </ul>
       <div class="search left">
-        <form action="<%= sitcoms_path %>" method="GET">
+        <form action="<%= searches_path %>" method="GET">
           <input id="searchBar" type="text" name="search" value="">
           <input id="searchButton" type="submit" value="Search" class="button">
         </form>

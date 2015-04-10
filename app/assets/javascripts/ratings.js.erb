@@ -1,13 +1,12 @@
 $('.set_rating').raty({
-                  path: "/assets/",
-
+                  path: "/images",
                   score: function(){
                     return $(this).attr('data-score');
                   }
 });
 
 $('.avg_rating').raty({
-                 path: "/assets/",
+                 path: "/images",
                  readOnly: true,
                  score: function(){
                    return $(this).attr('data-score');
@@ -15,7 +14,7 @@ $('.avg_rating').raty({
 });
 
 $('.review_rating').raty({
-                    path: "/assets/",
+                    path: "/images",
                     readOnly:true,
                     score: function(){
                       return $(this).attr('data-score');

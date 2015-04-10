@@ -31,7 +31,7 @@ group :test do
 end
 
 gem 'devise'
-gem 'foundation-rails', github: 'zurb/foundation-rails'
+gem 'foundation-rails', '5.5.1.0'
 gem 'foundation_rails_helper'
 gem 'kaminari'
 gem 'carrierwave'

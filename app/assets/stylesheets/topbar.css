@@ -12,6 +12,11 @@ input#searchBar {
 input#searchButton {
   margin-left: 0.5em;
   position: relative;
-  /* transform: translateY(-24%); */
+  transform: translateY(-48%);
   font-family: 'Karla', sans-serif;
+}
+
+.name {
+  padding-top: -5px;
+  padding-right: 10px;
 }

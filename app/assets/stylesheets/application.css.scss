@@ -15,64 +15,69 @@
  *= require foundation_and_overrides
 
  */
+ body, h2, h4 {
+   background-color: white;
+   font-family: 'Karla', sans-serif;
+ }
 
-body {
-  background-color: white;
-}
+ .review_body {
+   max-width: 500px;
+   word-wrap: break-word;
+ }
 
-.name {
-  padding-top: 7px;
-  padding-right: 10px;
-}
+ .top-bar {
+   background-color: #FCD720;
+ }
 
-.review_body {
-  max-width: 500px;
-  word-wrap: break-word;
-}
+ .top-bar-section li:not(.has-form) a:not(.button) {
+   background: #5CCEEE;
+ }
 
-.top-bar {
-  background-color: #7EBAC2;
-}
+ .upvote {
+   color: #E30922;
+ }
 
-
-.top-bar-section li:not(.has-form) a:not(.button) {
-  background: #E29714;
-}
-
-.upvote {
-  color: #E30922;
-}
-
-.downvote {
-  color: #E30922;
-}
+ .downvote {
+   color: #E30922;
+ }
 
 .formheader {
-  text-align: center
+   text-align: center
+ }
+
+.flash {
+  background-color: #5CCEEE;
+  color: white;
 }
 
 .new_sitcom {
-  width:985px; margin:0 auto
-}
+   width:985px; margin:0 auto
+ }
 
 .edit_sitcom {
-  width:985px; margin:0 auto
-}
+   width:985px; margin:0 auto
+ }
 
-#foto,
-#foto img {
-  background: #1abc9c;
-  border-radius:50%;
-}
+.button {
+   background-color: #5CCEEE;
+   font-family: 'Karla', sans-serif;
+ }
 
-#foto {
-  border: 15px solid #34495e;
-  border-radius: 50%;
-  height: 300px;
-  width: 300px;
-}
 
-#foto:hover img {
-  cursor: pointer;
-  opacity: 0.5;
-}
+ #foto,
+ #foto img {
+   background: #1abc9c;
+   border-radius:50%;
+ }
+
+ #foto {
+   border: 15px solid #34495e;
+   border-radius: 50%;
+   height: 300px;
+   width: 300px;
+ }
+
+ #foto:hover img {
+   cursor: pointer;
+   opacity: 0.5;
+ }
