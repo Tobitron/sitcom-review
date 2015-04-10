@@ -1,9 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
-
-  def index
-    @comments = @review.comments
-  end
+  before_action :authenticate_user!
 
   def new
     @comment = Comment.new
@@ -16,31 +12,35 @@ class CommentsController < ApplicationController
     sitcom = @review.sitcom
     @comment.review_id = params[:review_id]
     if @comment.save
-      flash[:notice] = 'Your comment was added!'
+      flash[:notice] = "Your comment was added!"
     else
-      flash[:alert] = "Comment can\'t be blank."
+      flash[:alert] = "Comment can't be blank."
     end
     redirect_to sitcom
   end
 
   def edit
+    @comment = current_user.comments.find(params[:id])
+    @review = Review.find(params[:review_id])
+    @sitcom = @review.sitcom
   end
 
   def update
     @comment = current_user.comments.find(params[:id])
     sitcom = @comment.review.sitcom
     if @comment.update(comment_params)
-      flash[:notice] = 'Comment Updated'
+      flash[:notice] = "Your comment was updated!"
     else
-      flash[:alert] = 'Error: Comment not updated'
+      flash[:alert] = "Comment can't be blank."
     end
     redirect_to sitcom
   end
 
   def destroy
+    @comment = current_user.comments.find(params[:id])
     sitcom = @comment.review.sitcom
     @comment.destroy
-    flash[:notice] = 'Comment Deleted'
+    flash[:notice] = 'Comment deleted'
     redirect_to sitcom
   end
 

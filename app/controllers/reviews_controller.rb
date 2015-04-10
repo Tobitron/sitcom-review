@@ -1,9 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-
-  def index
-    @reviews = Review.newest_first.page params[:page]
-  end
+  before_action :authenticate_user!
 
   def new
     @sitcom = Sitcom.find(params[:sitcom_id])
@@ -48,9 +44,7 @@ class ReviewsController < ApplicationController
     @sitcom = @review.sitcom
     if @review.destroy
       flash[:notice] = "Review deleted"
-    else
-      flash[:alert] = "Something went wrong"
-    end
+    end  
     redirect_to sitcom_path(@sitcom)
   end
 

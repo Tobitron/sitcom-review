@@ -65,7 +65,12 @@
 
         <%= link_to "Comment on Review", new_review_comment_path(review), :class => "button tiny" %>
         <% review.comments.each_with_index do |comment, i| %>
-          <p class = "panel"> Comment <%= i + 1 %>: <%= comment.body %> </p>
+          <div class = "panel comment"> Comment <%= i + 1 %>: <%= comment.body %>
+          <% if comment.owner_or_admin?(current_user) %>
+            <%= link_to "Edit", edit_review_comment_path(review, comment), :class => "button tiny" %>
+            <%= link_to "Delete", review_comment_path(review, comment), method: :delete, :class => "button tiny", data: {confirm: "Are you sure?"} %>
+          <% end %>
+          </div>
         <% end %>
       </div>
     <% end %>

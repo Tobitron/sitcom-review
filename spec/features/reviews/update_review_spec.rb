@@ -11,7 +11,7 @@ feature 'Feature: updating reviews' do
     scenario 'I can successfully update a review', js:true do
       review = FactoryGirl.create(:review, user: user)
       visit edit_review_path(review)
-      fill_in 'Body', with: 'I really like this show so much that I edited it.'
+      fill_in 'Body', with: "I've changed my mind about this show."
       find(:xpath, "//img[@alt='4']").click
       click_on 'Update Review'
       expect(page).to have_content("Review updated!")

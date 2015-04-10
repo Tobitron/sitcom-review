@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :sitcoms do
-    resources :reviews
+    resources :reviews, except: [:index, :show]
   end
 
-  resources :reviews do
-    resources :comments
+  resources :reviews, except: [:index, :show] do
+    resources :comments, except: [:index, :show]
     resources :upvotes, only: [:create]
     resources :downvotes, only: [:create]
   end

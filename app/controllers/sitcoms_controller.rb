@@ -4,11 +4,7 @@ class SitcomsController < ApplicationController
 
   def index
     @sitcom_manager = SitcomManager.new(params[:search], params[:page])
-    unless params[:search] == nil
-      @sitcoms = Sitcom.search(params[:search]).page params[:page]
-    else
-      @sitcoms = Sitcom.order(start_year: :desc).page params[:page]
-    end
+    @sitcoms = Sitcom.order(start_year: :desc).page params[:page]
   end
 
   def new
@@ -46,9 +42,6 @@ class SitcomsController < ApplicationController
     if @sitcom.destroy
       flash[:notice] = 'Sitcom Deleted'
       redirect_to root_path
-    else
-      flash[:alert] = 'Error: Sitcom not Deleted'
-      render :show
     end
   end
 
